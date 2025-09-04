@@ -1,0 +1,29 @@
+{{ "app.css" | asset_url | stylesheet_tag }}
+
+{%- assign app = section.blocks | where: "type", "app" | first -%}
+
+<div class="app__wrapper">
+  {%- if section_preview or app == nil-%}
+    <div class="app__preview">
+      <span>The contents of this section vary by App.</span>
+    </div>
+  {%- else -%}
+    <div class="app__content">
+      {% render 'app', block: app, section: section %}
+    </div>
+  {%- endif -%}
+</div>
+
+{% schema %}
+  {
+    "name": "App",
+    "tag": "section",
+    "class": "app",
+    "settings": [],
+    "blocks": [
+      {
+        "type": "@app"
+      }
+    ]
+  }
+{% endschema %}

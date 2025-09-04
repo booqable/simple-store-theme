@@ -1,0 +1,127 @@
+{{ "collections.css" | asset_url | stylesheet_tag }}
+
+{%- assign image_fit = settings.collection_card_image_fit -%}
+
+{% comment %} CSS variables start {% endcomment %}
+{%- capture image_variables -%}
+  {%- case image_fit -%}
+    {%- when 'cover' -%}
+      --object-fit: cover;
+    {%- when 'contain' -%}
+      --object-fit: contain;
+  {%- endcase -%}
+{%- endcapture -%}
+{% comment %} CSS variables end {% endcomment %}
+
+{% if section.settings.title %}
+  <h2 class="collections__title collections__title--size-{{ section.settings.title_size }}">{{ section.settings.title }}</h2>
+{% endif %}
+{% if section.settings.enable_show_more %}
+  <a href="{{ routes.collections_url }}" class="collections__show-more">
+    {{ section.settings.show_more_label }}
+    <i class="fa-regular fa-chevron-right"></i>
+  </a>
+{% endif %}
+<div class="collections__list{% if settings.collection_card_image_overlay %} collections__list--overlay{% endif %}"{% if image_fit != blank %} style="{{- image_variables | escape -}}"{%- endif -%}>
+  {% if section.blocks.size >= 1 and section.blocks.first.settings.collection != blank %}
+    {% for block in section.blocks %}
+      {% assign featured_image = "" %}
+      {% assign first_product = block.settings.collection.products | first %}
+
+      <a id="{{ block.id }}" href="{{ block.settings.collection.url }}">
+        <div class="collection">
+          {% if block.settings.collection.image.url != blank %}
+            {% assign featured_image = block.settings.collection.image.url %}
+          {% elsif first_product and first_product.images.first != empty %}
+            {% assign featured_image = first_product.images.first %}
+          {% endif %}
+
+          {% if featured_image != blank %}
+            {{ featured_image | image_tag:
+              loading: 'lazy',
+              class: 'collection__image',
+              widths: '450, 550, 650',
+              sizes: '(max-width: 576px) 450px, (max-width: 768px) 550px, 650px',
+              alt: block.settings.collection.name
+            }}
+          {% endif %}
+
+          <h3 class="collection__name">{{ block.settings.collection.name }}</h3>
+        </div>
+      </a>
+    {% endfor %}
+  {% else %}
+    <div class="collection">
+      {{ "booqable://assets/image-background-placeholder.jpg" | image_tag:
+        loading: 'lazy',
+        class: 'collection__image',
+        widths: '450, 550, 650',
+        sizes: '(max-width: 576px) 450px, (max-width: 768px) 550px, 650px'
+      }}
+      <h3 class="collection__name">Collection</h3>
+    </div>
+  {% endif %}
+</div>
+
+{% schema %}
+{
+  "name": "Collections",
+  "description": "Display a list of collections.",
+  "tag": "section",
+  "class": "collections",
+  "settings": [
+    {
+      "type": "text",
+      "id": "title",
+      "label": "Title",
+      "default": "Collections"
+    },
+    {
+      "type": "select",
+      "id": "title_size",
+      "label": "Title size",
+      "options": [
+        {
+          "value": "sm",
+          "label": "Small"
+        },
+        {
+          "value": "md",
+          "label": "Medium"
+        },
+        {
+          "value": "lg",
+          "label": "Large"
+        }
+      ],
+      "default": "md"
+    },
+    {
+      "type": "text",
+      "id": "show_more_label",
+      "label": "Show more label",
+      "default": "Browse all collections"
+    },
+    {
+      "type": "checkbox",
+      "id": "enable_show_more",
+      "default": true,
+      "label": "Enable show more"
+    }
+  ],
+  "max_blocks": 16,
+  "blocks": [
+    {
+      "type": "collection",
+      "name": "Collection",
+      "settings": [
+        {
+          "type": "collection",
+          "id": "collection",
+          "label": "Collection"
+        }
+      ]
+    }
+  ]
+}
+{% endschema %}
