@@ -1,5 +1,25 @@
 {
-  "current": {
-
+  "current": {  
+    "accent_foreground_color": "#FFFFFF",
+    "link_color": "#395DB8",
+    "primary_background_color": "#FFFFFF",
+    "primary_foreground_color": "#0C2747",
+    "primary_color": "#395DB8",
+    "heading_font": "source-sans-pro",
+    "body_font": "source-sans-pro",
+    "sections": {
+      "header": {
+        "type": "header",
+        "blocks": {},
+        "block_order": [],
+        "settings": {
+          "logo": "",
+          "background_color": "",
+          "foreground_color": "",
+          "search_placeholder": "Search products"
+        },
+        "disabled": null
+      }
+    }
   }
 }
