@@ -1,0 +1,52 @@
+{{ "cart.css" | asset_url | stylesheet_tag }}
+
+{% render 'cart-components-styles' %}
+
+{% if section.settings.show_title %}
+  <h3 class="cart__title">
+    {% if section.settings.title != blank %}
+      {{ section.settings.title }}
+    {% else %}
+      {{ cart.title }}
+    {% endif %}
+  </h3>
+{% endif %}
+
+<div class="cart__lines">
+  {{ cart | lines }}
+</div>
+
+<div class="cart__footer">
+  {{ cart | services }}
+  {{ cart | totals }}
+</div>
+
+{% schema %}
+{
+  "name": "Cart",
+  "description": "Display all necessary information about the cart",
+  "tag": "section",
+  "class": "cart",
+  "settings": [
+    {
+      "type": "header",
+      "content": "Title"
+    },
+    {
+      "type": "text",
+      "id": "title",
+      "label": "Title",
+      "info": "Leave blank to use title defined in the translations"
+    },
+    {
+      "type": "checkbox",
+      "id": "show_title",
+      "label": "Show title",
+      "default": true
+    }
+  ],
+  "templates": ["cart"],
+  "unique": true,
+  "important": true
+}
+{% endschema %}

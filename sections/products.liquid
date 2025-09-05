@@ -1,0 +1,213 @@
+{{ "products.css" | asset_url | stylesheet_tag }}
+{{ "product.css" | asset_url | stylesheet_tag }}
+{{ "carousels.css" | asset_url | stylesheet_tag }}
+
+{% if section.settings.collection != blank %}
+  {% assign data = section.settings.collection.items %}
+  {% if section.settings.collection.items_count > 0 %}
+    {% assign data_exists = true %}
+  {% else %}
+    {% assign data_exists = false %}
+  {% endif %}
+  {% assign data_type = "collection" %}
+{% else %}
+  {% assign data = section.blocks %}
+  {% if data.size > 0 and data.first.settings.product != blank %}
+    {% assign data_exists = true %}
+  {% else %}
+    {% assign data_exists = false %}
+  {% endif %}
+  {% assign data_type = "blocks" %}
+{% endif %}
+
+{% if section.settings.title %}
+  <h2 class="products__title products__title--size-{{ section.settings.title_size }}">{{ section.settings.title }}</h2>
+{% endif %}
+{% if data_exists %}
+  {% assign card_image_fit = settings.product_card_image_fit %}
+
+  {% comment %} CSS variables start {% endcomment %}
+  {% capture image_variables %}
+    {% case card_image_fit %}
+      {% when 'cover' %}
+        --object-fit: cover;
+      {% when 'contain' %}
+        --object-fit: contain;
+    {% endcase %}
+  {% endcapture %}
+
+  {% if settings.use_focal_images %}
+    {% capture image_variables %}
+      --object-fit: cover;
+    {% endcapture %}
+  {% endif %}
+  {% comment %} CSS variables end {% endcomment %}
+
+  {% if section.settings.use_carousel %}
+    <div class="carousel carousel--snap-{{ section.settings.snap }}">
+      <div class="carousel__inner {% if section.settings.infinite_scroll %}infinite-scroll{% endif %}"{% if card_image_fit != blank %} style="{{- image_variables | escape -}}"{% endif %}>
+        {% include "products-inner" %}
+      </div>
+      <div class="carousel__controls">
+        <div class="carousel__control prev">
+          <i class="fa-regular fa-arrow-left"></i>
+        </div>
+        <div class="carousel__control next">
+          <i class="fa-regular fa-arrow-right"></i>
+        </div>
+      </div>
+    </div>
+  {% else %}
+    {% if section.settings.use_pagination and data_type == "collection" %}
+      {% assign per_page = section.settings.paginate_per | times: 1 %}
+      {% assign key = section.key %}
+      {% paginate data by per_page page_param: key %}
+        <div class="products__inner"{% if card_image_fit != blank %} style="{{- image_variables | escape -}}"{% endif %}>
+          {% include "products-inner" %}
+        </div>
+        {% if paginate.pages > 1 %}
+          {% include "pagination" %}
+        {% endif %}
+      {% endpaginate %}
+    {% else %}
+      <div class="products__inner"{% if card_image_fit != blank %} style="{{- image_variables | escape -}}"{% endif %}>
+        {% include "products-inner" %}
+      </div>
+    {% endif %}
+  {% endif %}
+{% else %}
+  <div class="products__inner">
+    <div class="product">
+      {{ "booqable://assets/image-background-placeholder.jpg" | image_tag:
+        loading: 'lazy',
+        class: 'product__image',
+        widths: '500, 700',
+        sizes: '(max-width: 490px) 700px, 500px'
+      }}
+      <h3 class="product__name">Product</h3>
+      <span class="bq-product-price-label">
+        1 day
+      </span>
+      <span class="bq-product-price">
+        $100.00
+      </span>
+    </div>
+  </div>
+{% endif %}
+
+{% schema %}
+{
+  "name": "Products",
+  "description": "Display products from a collection or individually in a list or carousel layout.",
+  "tag": "section",
+  "class": "products",
+  "settings": [
+    {
+      "type": "header",
+      "content": "General"
+    },
+    {
+      "type": "text",
+      "id": "title",
+      "label": "Title"
+    },
+    {
+      "type": "select",
+      "id": "title_size",
+      "label": "Title size",
+      "options": [
+        {
+          "value": "sm",
+          "label": "Small"
+        },
+        {
+          "value": "md",
+          "label": "Medium"
+        },
+        {
+          "value": "lg",
+          "label": "Large"
+        }
+      ],
+      "default": "md"
+    },
+    {
+      "type": "collection",
+      "id": "collection",
+      "label": "Collection",
+      "info": "Note: The collection takes precedence over \"Product\" blocks"
+    },
+    {
+      "type": "checkbox",
+      "id": "show_excerpt",
+      "label": "Show description excerpt",
+      "default": false
+    },
+    {
+      "type": "header",
+      "content": "Pagination"
+    },
+    {
+      "type": "checkbox",
+      "id": "use_pagination",
+      "label": "Paginate products",
+      "info": "Note: Not applicable for \"Product\" blocks"
+    },
+    {
+      "type": "number",
+      "id": "paginate_per",
+      "label": "Products per page",
+      "default": 12
+    },
+    {
+      "type": "header",
+      "content": "Carousel"
+    },
+    {
+      "type": "checkbox",
+      "id": "use_carousel",
+      "label": "Use carousel",
+      "info": "Note: Not applicable when pagination enabled"
+    },
+    {
+      "type": "checkbox",
+      "id": "infinite_scroll",
+      "label": "Infinite loop scrolling"
+    },
+    {
+      "type": "select",
+      "id": "snap",
+      "label": "Items alignment",
+      "options": [
+        {
+          "value": "start",
+          "label": "Left"
+        },
+        {
+          "value": "center",
+          "label": "Center"
+        },
+        {
+          "value": "end",
+          "label": "Right"
+        }
+      ],
+      "default": "center"
+    }
+  ],
+  "max_blocks": 16,
+  "blocks": [
+    {
+      "type": "product",
+      "name": "Product",
+      "settings": [
+        {
+          "type": "product",
+          "id": "product",
+          "label": "Product"
+        }
+      ]
+    }
+  ]
+}
+{% endschema %}
