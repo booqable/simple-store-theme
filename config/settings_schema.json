@@ -4,5 +4,294 @@
     "theme_name": "Simple Store",
     "theme_version": "1.0.0",
     "theme_author": "Booqable"
+  },
+  {
+    "name": "Colors",
+    "settings": [
+      {
+        "type": "color",
+        "id": "primary_color",
+        "label": "Accent background color",
+        "info": "Background for solid buttons, date picker, and shopping cart.\n\nNote: if the color is not set the company branding color will be applied.",
+        "default": "#395DB8"
+      },
+      {
+        "type": "color",
+        "id": "accent_foreground_color",
+        "label": "Accent foreground color",
+        "info": "For text used on top of accent background color",
+        "default": "#FFFFFF"
+      },
+      {
+        "type": "divider"
+      },
+      {
+        "type": "color",
+        "id": "primary_background_color",
+        "label": "Primary background color",
+        "info": "Primary background color for your store",
+        "default": "#FFFFFF"
+      },
+      {
+        "type": "color",
+        "id": "primary_foreground_color",
+        "label": "Primary foreground color",
+        "info": "For text used on top of primary background color",
+        "default": "#0C2747"
+      },
+      {
+        "type": "divider"
+      },
+      {
+        "type": "color",
+        "id": "link_color",
+        "label": "Link color",
+        "info": "Used for text links and non-solid buttons",
+        "default": "#395DB8"
+      }
+    ]
+  },
+  {
+    "name": "Typography",
+    "settings": [
+      {
+        "type": "font_picker",
+        "id": "heading_font",
+        "label": "Heading",
+        "info": "Font used for headers",
+        "default": "source-sans-pro"
+      },
+      {
+        "type": "font_picker",
+        "id": "body_font",
+        "label": "Body",
+        "info": "Font used for texts",
+        "default": "source-sans-pro"
+      }
+    ]
+  },
+  {
+    "name": "Images",
+    "settings": [
+      {
+        "type": "header",
+        "content": "Product card image settings"
+      },
+      {
+        "type": "select",
+        "id": "product_card_image_fit",
+        "label": "Image fit",
+        "options": [
+          {
+            "value": "cover",
+            "label": "Cover"
+          },
+          {
+            "value": "contain",
+            "label": "Contain"
+          }
+        ],
+        "default": "contain"
+      },
+      {
+        "type": "checkbox",
+        "id": "use_focal_images",
+        "label": "Use focal images",
+        "info": "Display point focused image instead of full sized. Overwrites the 'Image fit' values."
+      },
+      {
+        "type": "header",
+        "content": "Collection image settings"
+      },
+      {
+        "type": "select",
+        "id": "collection_card_image_fit",
+        "label": "Image fit",
+        "options": [
+          {
+            "value": "cover",
+            "label": "Cover"
+          },
+          {
+            "value": "contain",
+            "label": "Contain"
+          }
+        ],
+        "default": "cover"
+      },
+      {
+        "type": "checkbox",
+        "id": "collection_card_image_overlay",
+        "label": "Show image overlay",
+        "default": true
+      }
+    ]
+  },
+  {
+    "name": "Social media",
+    "settings": [
+      {
+        "type": "text",
+        "id": "social_twitter_link",
+        "label": "Twitter",
+        "info": "https://twitter.com/booqable"
+      },
+      {
+        "type": "text",
+        "id": "social_facebook_link",
+        "label": "Facebook",
+        "info": "https://facebook.com/booqable"
+      },
+      {
+        "type": "text",
+        "id": "social_pinterest_link",
+        "label": "Pinterest",
+        "info": "https://pinterest.com/booqable"
+      },
+      {
+        "type": "text",
+        "id": "social_instagram_link",
+        "label": "Instagram",
+        "info": "https://instagram.com/booqable"
+      },
+      {
+        "type": "text",
+        "id": "social_tiktok_link",
+        "label": "TikTok",
+        "info": "https://tiktok.com/@booqable"
+      },
+      {
+        "type": "text",
+        "id": "social_tumblr_link",
+        "label": "Tumblr",
+        "info": "https://booqable.tumblr.com"
+      },
+      {
+        "type": "text",
+        "id": "social_snapchat_link",
+        "label": "Snapchat",
+        "info": "https://snapchat.com/add/booqable"
+      },
+      {
+        "type": "text",
+        "id": "social_youtube_link",
+        "label": "YouTube",
+        "info": "https://youtube.com/booqable"
+      },
+      {
+        "type": "text",
+        "id": "social_vimeo_link",
+        "label": "Vimeo",
+        "info": "https://vimeo.com/booqable"
+      }
+    ]
+  },
+  {
+    "name": "Cookie notice",
+    "settings": [
+      {
+        "type": "checkbox",
+        "id": "cookie_notice_activated",
+        "label": "Show cookie notice"
+      },
+      {
+        "type": "header",
+        "content": "Consent popup"
+      },
+      {
+        "type": "text",
+        "id": "cookie_notice_consent_modal_title",
+        "label": "Title",
+        "default": "This website uses cookies"
+      },
+      {
+        "type": "text",
+        "id": "cookie_notice_consent_modal_description",
+        "label": "Description",
+        "default": "This website collects cookies to deliver you the best possible user experience."
+      },
+      {
+        "type": "text",
+        "id": "cookie_notice_consent_modal_accept_all",
+        "label": "All cookies button label",
+        "default": "Accept all"
+      },
+      {
+        "type": "text",
+        "id": "cookie_notice_consent_modal_accept_essential",
+        "label": "Essential cookies button label",
+        "default": "Accept only essential"
+      },
+      {
+        "type": "text",
+        "id": "cookie_notice_consent_modal_manage_preferences",
+        "label": "Cookie preferences button label",
+        "default": "Manage preferences"
+      },
+      {
+        "type": "header",
+        "content": "Preferences popup"
+      },
+      {
+        "type": "text",
+        "id": "cookie_notice_preferences_modal_title",
+        "label": "Title",
+        "default": "Manage your cookie preferences"
+      },
+      {
+        "type": "text",
+        "id": "cookie_notice_preferences_modal_accept_all",
+        "label": "All cookies button label",
+        "default": "Accept all"
+      },
+      {
+        "type": "text",
+        "id": "cookie_notice_preferences_modal_accept_essential",
+        "label": "Essential cookies button label",
+        "default": "Accept only essential"
+      },
+      {
+        "type": "text",
+        "id": "cookie_notice_preferences_modal_save_preferences",
+        "label": "Save preferences button label",
+        "default": "Save preferences"
+      },
+      {
+        "type": "text",
+        "id": "cookie_notice_preferences_modal_description_heading",
+        "label": "Description heading",
+        "default": "Your Privacy Choices"
+      },
+      {
+        "type": "textarea",
+        "id": "cookie_notice_preferences_modal_description_body",
+        "label": "Description text",
+        "default": "In this panel you can express some preferences related to the processing of your personal information. If you allow Performance and Analytics cookies, your data may be used for personalization of ads across Google and other platforms. To deny your consent to the specific processing activities described below, switch the toggles to off and confirm you want to save your choices."
+      },
+      {
+        "type": "text",
+        "id": "cookie_notice_preferences_modal_essential_cookies_title",
+        "label": "Essential cookies title",
+        "default": "Strictly Necessary cookies"
+      },
+      {
+        "type": "text",
+        "id": "cookie_notice_preferences_modal_essential_cookies_description",
+        "label": "Essential cookies description",
+        "default": "These cookies are essential for the proper functioning of the website and cannot be disabled."
+      },
+      {
+        "type": "text",
+        "id": "cookie_notice_preferences_modal_tracking_cookies_title",
+        "label": "Tracking cookies title",
+        "default": "Performance and Analytics"
+      },
+      {
+        "type": "text",
+        "id": "cookie_notice_preferences_modal_tracking_cookies_description",
+        "label": "Tracking cookies description",
+        "default": "These cookies collect information about how you use our website. All of the data is anonymized and cannot be used to identify you."
+      }
+    ]
   }
 ]

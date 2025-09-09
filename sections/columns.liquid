@@ -1,0 +1,323 @@
+{{ "columns.css" | asset_url | stylesheet_tag }}
+{{ "post.css" | asset_url | stylesheet_tag }}
+
+{% assign column = section.blocks.first.settings %}
+{% if column.image.url != blank or column.title != blank or column.text != blank or column.button != blank %}
+  {% assign column_exists = true %}
+{% endif %}
+
+<style>
+  #section-{{ section.key }} .columns__title--position-{{ section.settings.title_position }} {
+    text-align: {{ section.settings.title_position }};
+  }
+  #section-{{ section.key }} .columns__container--alignment {
+    text-align: {{ section.settings.content_align }};
+  }
+  {% if section.settings.content_color != blank %}
+  #section-{{ section.key }}.columns .post__text {
+    --color-primary-foreground: {{ section.settings.content_color }};
+  }
+  {% endif %}
+  {% for block in section.blocks %}
+    .columns-{{ section.key }} #{{ block.id }} .bq-button {
+      color: var(--color-link);
+
+      {% if block.settings.use_solid_button %}
+        background-color: var(--color-accent-background);
+        color: var(--color-accent-foreground);
+      {% endif %}
+
+      {% if block.settings.use_solid_button and block.settings.background_color != blank %}
+        background-color: {{ block.settings.background_color }};
+      {% endif %}
+
+      {% if block.settings.label_color != blank %}
+        color: {{ block.settings.label_color }};
+      {% endif %}
+    }
+  {% endfor %}
+</style>
+
+<h2 class="columns__title columns__title--size-{{ section.settings.title_size }} columns__title--position-{{ section.settings.title_position }}">
+  {{ section.settings.title_section }}
+</h2>
+
+<div class="columns-{{ section.key }} columns__container columns__container--alignment columns__container--count-{{ section.settings.columns_count }}">
+  {% if section.blocks.size >= 1 and column_exists %}
+    {% for block in section.blocks %}
+      <div id="{{ block.id }}" class="columns__column post">
+        {% if block.settings.image.url != blank %}
+          {% if block.settings.image_border_radius == true %}
+            {% assign class = "post__image post__image--border-radius" %}
+          {% else %}
+            {% assign class = "post__image" %}
+          {% endif %}
+          {% case section.settings.columns_count %}
+            {% when 1 %}
+              {% assign widths = '700, 900, 1400' %}
+            {% when 2 %}
+              {% assign widths = '700, 900' %}
+              {% assign sizes = '(max-width: 576px) 900px, 700px' %}
+            {% when 3 %}
+              {% assign widths = '500, 700, 900' %}
+              {% assign sizes = '(max-width: 576px) 900px, (max-width: 810px) 700px, 500px' %}
+          {% endcase %}
+          {{ block.settings.image.url | image_tag:
+            loading: 'lazy',
+            widths: widths,
+            sizes: sizes,
+            class: class,
+            alt: block.settings.image_alt
+          }}
+        {% endif %}
+        <div class="post__content">
+          {% if block.settings.title != blank %}
+            <h3 class="post__title post__title--size-{{ section.settings.heading_size }}">{{ block.settings.title }}</h3>
+          {% endif %}
+          {% if block.settings.text != blank %}
+            <div class="bq-content rx-content post__text">{{ block.settings.text }}</div>
+          {% endif %}
+          {% if block.settings.button_url != blank %}
+            <a class="bq-button bq-button--size-{{ block.settings.button_size }} {% if block.settings.use_solid_button %}bq-button--solid{% endif %}" href="{{ block.settings.button_url }}" {% if block.settings.use_new_tab %}target="_blank"{% endif %}>
+              {{ block.settings.button }}
+            </a>
+          {% endif %}
+        </div>
+      </div>
+    {% endfor %}
+  {% else %}
+    <div class="columns__column post">
+      {{ "booqable://assets/background-mountains.jpeg" | image_tag:
+        loading: 'lazy',
+        widths: "700, 900, 1400",
+        class: "post__image post__image--border-radius"
+      }}
+      <div class="post__content">
+        <h3 class="post__title post__title--size-{{ section.settings.heading_size }}">Column</h3>
+        <div class="bq-content rx-content post__text">
+          <p>Add some text to tell a story, explain how renting with your company works, or to let your potential customers know about the value you offer. Use this space however you like and fill it with whatever you want.</p>
+        </div>
+      </div>
+    </div>
+  {% endif %}
+</div>
+
+{% schema %}
+{
+  "name": "Columns",
+  "description": "Display content in a single or multi-column layout.",
+  "tag": "section",
+  "class": "columns",
+  "settings": [
+    {
+      "type": "header",
+      "content": "General"
+    },
+    {
+      "type": "text",
+      "id": "title_section",
+      "label": "Title"
+    },
+    {
+      "type": "select",
+      "id": "title_size",
+      "label": "Title size",
+      "options": [
+        {
+          "value": "sm",
+          "label": "Small"
+        },
+        {
+          "value": "md",
+          "label": "Medium"
+        },
+        {
+          "value": "lg",
+          "label": "Large"
+        }
+      ],
+      "default": "md"
+    },
+    {
+      "type": "select",
+      "id": "title_position",
+      "label": "Title position",
+      "options": [
+        {
+          "value": "left",
+          "label": "Left"
+        },
+        {
+          "value": "center",
+          "label": "Center"
+        },
+        {
+          "value": "right",
+          "label": "Right"
+        }
+      ],
+      "default": "left"
+    },
+    {
+      "type": "header",
+      "content": "Content"
+    },
+    {
+      "type": "select",
+      "id": "heading_size",
+      "label": "Heading size",
+      "options": [
+        {
+          "value": "sm",
+          "label": "Small"
+        },
+        {
+          "value": "md",
+          "label": "Medium"
+        },
+        {
+          "value": "lg",
+          "label": "Large"
+        }
+      ],
+      "default": "md"
+    },
+    {
+      "type": "select",
+      "id": "content_align",
+      "label": "Content alignment",
+      "options": [
+        {
+          "value": "left",
+          "label": "Left"
+        },
+        {
+          "value": "center",
+          "label": "Center"
+        }
+      ],
+      "default": "left"
+    },
+    {
+      "type": "color",
+      "id": "content_color",
+      "label": "Text color",
+      "placeholder": "Default"
+    },
+    {
+      "type": "header",
+      "content": "Layout"
+    },
+    {
+      "type": "number",
+      "id": "columns_count",
+      "label": "Columns per row",
+      "min": 1,
+      "max": 3,
+      "default": 3
+    }
+  ],
+  "max_blocks": 9,
+  "blocks": [
+    {
+      "type": "column",
+      "name": "Column",
+      "settings": [
+        {
+          "type": "header",
+          "content": "Image"
+        },
+        {
+          "id": "image",
+          "type": "image_picker",
+          "default": "booqable://assets/background-mountains.jpeg"
+        },
+        {
+          "id": "image_alt",
+          "type": "text",
+          "label": "Alternative text"
+        },
+        {
+          "id": "image_border_radius",
+          "type": "checkbox",
+          "label": "Use round corners",
+          "default": true
+        },
+        {
+          "type": "header",
+          "content": "Content"
+        },
+        {
+          "id": "title",
+          "type": "text",
+          "label": "Heading",
+          "default": "Column"
+        },
+        {
+          "id": "text",
+          "type": "contentEditor",
+          "label": "Text",
+          "default": "<p>Add some text to tell a story, explain how renting with your company works, or to let your potential customers know about the value you offer. Use this space however you like and fill it with whatever you want.</p>"
+        },
+        {
+          "type": "header",
+          "content": "Button"
+        },
+        {
+          "id": "button",
+          "type": "text",
+          "label": "Label"
+        },
+        {
+          "id": "button_url",
+          "type": "url",
+          "label": "URL"
+        },
+        {
+          "id": "use_new_tab",
+          "type": "checkbox",
+          "label": "Open in a new tab"
+        },
+        {
+          "id": "use_solid_button",
+          "type": "checkbox",
+          "label": "Use solid button",
+          "default": true
+        },
+        {
+          "id": "background_color",
+          "type": "color",
+          "label": "Background color",
+          "placeholder": "Default"
+        },
+        {
+          "id": "label_color",
+          "type": "color",
+          "label": "Label color",
+          "placeholder": "Default"
+        },
+        {
+          "type": "select",
+          "id": "button_size",
+          "label": "Size",
+          "options": [
+            {
+              "value": "sm",
+              "label": "Small"
+            },
+            {
+              "value": "md",
+              "label": "Medium"
+            },
+            {
+              "value": "lg",
+              "label": "Large"
+            }
+          ],
+          "default": "md"
+        }
+      ]
+    }
+  ]
+}
+{% endschema %}
