@@ -54,6 +54,36 @@ const initSearch = () => {
   searchForm.addEventListener("submit", handleSearchSubmit);
 };
 
+const handleSetMobileMenuHeight = () => {
+  const menu = document.querySelector(".header-floating-menu__wrapper");
+
+  if (window.innerWidth > 762 || !menu) return;
+
+  let totalHeight = 0;
+
+  const previewBar = document.querySelector(".preview-bar__container");
+
+  if (!previewBar && tryCount < 5) {
+    tryCount += 1;
+
+    if (previewBarTimeout) clearTimeout(previewBarTimeout);
+
+    previewBarTimeout = setTimeout(() => {
+      handleSetMobileMenuHeight();
+    }, 100);
+
+    return;
+  }
+
+  const header = document.querySelector(".header__wrapper");
+
+  totalHeight =
+    header.getBoundingClientRect().height +
+    (previewBar?.getBoundingClientRect().height ?? 0);
+
+  menu.style.height = `calc(100vh - ${totalHeight}px)`;
+};
+
 const handleScroll = () => {
   const previewBar = document.querySelector(".preview-bar__container");
 
@@ -77,6 +107,16 @@ const handleScroll = () => {
   }
 };
 
+document.addEventListener("DOMContentLoaded", () => {
+  // Initializers
+  initSearch();
+  handleSetMobileMenuHeight();
+});
+
 window.addEventListener("load", initFocalImages);
+
+window.addEventListener("resize", () => {
+  handleSetMobileMenuHeight();
+});
 
 window.addEventListener("scroll", handleScroll);
