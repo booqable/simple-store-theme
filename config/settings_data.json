@@ -1,5 +1,4 @@
 {
-  
   "current": {
     "accent_foreground_color": "#FFFFFF",
     "link_color": "#395DB8",
@@ -18,7 +17,7 @@
           "logo": "",
           "background_color": "",
           "foreground_color": "",
-          "search_placeholder": "Search products"
+          "search_placeholder": "What are you looking for?"
         },
         "disabled": null
       },
