@@ -1,19 +1,19 @@
 {
   "current": {
     "accent_foreground_color": "#FFFFFF",
-    "link_color": "#395DB8",
+    "link_color": "#2B67C1",
     "primary_background_color": "#FFFFFF",
-    "primary_foreground_color": "#0C2747",
-    "primary_color": "#395DB8",
-    "heading_font": "source-sans-pro",
-    "body_font": "source-sans-pro",
+    "primary_foreground_color": "#140202",
+    "primary_color": "#2B67C1",
+    "heading_font": "open-sans",
+    "body_font": "open-sans",
     "sections": {
       "header": {
         "type": "header",
         "blocks": {},
         "block_order": [],
         "settings": {
-          "menu": "main-menu",
+          "menu": "",
           "logo": "",
           "background_color": "",
           "foreground_color": "",
@@ -23,19 +23,8 @@
       },
       "footer": {
         "type": "footer",
-        "blocks": {
-          "menu": {
-            "type": "menu",
-            "settings": {
-              "menu": "main-menu",
-              "align": "center"
-            },
-            "disabled": null
-          }
-        },
-        "block_order": [
-          "menu"
-        ],
+        "blocks": {},
+        "block_order": [],
         "settings": {
           "show_copyright": true,
           "privacy_policy_link_text": "Privacy policy"

@@ -6,10 +6,6 @@
   margin: 0 auto;
 }
 
-.footer__content {
-  border-top: 1px solid var(--color-border);
-}
-
 .footer__nav {
   padding: 15px 0;
 }

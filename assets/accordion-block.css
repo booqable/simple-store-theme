@@ -10,7 +10,7 @@
   margin: 0 0 17px;
   padding: 8px 0;
   position: relative;
-  border-bottom: 1px solid var(--color-border);
+  border-bottom: 1px solid var(--color-grey-light);
 }
 
 .accordion-block__heading {
