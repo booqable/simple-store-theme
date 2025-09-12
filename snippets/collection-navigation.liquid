@@ -1,0 +1,90 @@
+{{ "collection-navigation.css" | asset_url | stylesheet_tag }}
+
+{% if mode == "mobile" %}
+  <input type="checkbox" id="sidebar-toggle">
+  <label for="sidebar-toggle" class="sidebar-toggle-element">
+    {{ toggle }}
+  </label>
+{% endif %}
+<div class="sidebar-navigation sidebar-navigation--sticky">
+  <div class="sidebar-navigation__wrapper">
+    {% if mode == "mobile" %}
+      <div class="sidebar-navigation__header">
+        <h2 class="sidebar-navigation__title">{{ toggle }}</h2>
+        <label for="sidebar-toggle">
+          <div class="sidebar-navigation__close">
+            <i class="fa-regular fa-xmark"></i>
+          </div>
+        </label>
+      </div>
+    {% endif %}
+    <div class="sidebar-navigation__inner">
+      <div class="sidebar-navigation-menu">
+        <p class="sidebar-navigation-menu__title">{{ 'store.all_collections' | user_t }}</p>
+        <ul class="list-menu list-menu--vertical">
+          <li class="list-menu__item">
+            <span class="list-menu__item-wrapper">
+              <a href="{{ root }}" class="sidebar-navigation-menu__link">{{ all_products.name }}</a>
+              <span class="sidebar-navigation-menu__item-count">{{ all_products.items_count }}</span>
+            </span>
+          </li>
+          {% for collection in collections %}
+            {% assign url = collection.url | strip %}
+            <li class="list-menu__item">
+              {% if collection.has_children %}
+                <input type="checkbox" id="sidebar-navigation-menu-child-{{collection.id}}{% if mode == "mobile" %}-mobile{% endif %}" {% if mode == "desktop" %}checked{% endif %}>
+              {%  endif %}
+              <span class="list-menu__item-wrapper">
+                {% if collection.has_children %}
+                  <label for="sidebar-navigation-menu-child-{{collection.id}}{% if mode == "mobile" %}-mobile{% endif %}">
+                    <i class="{% if current_url == url %}fa-solid fa-angle-down{%  else %}fa-regular fa-angle-down{% endif %} list-menu__item-caret"></i>
+                  </label>
+                {%  endif %}
+                <a href="{{ url }}" class="sidebar-navigation-menu__link {% if current_url == url %}sidebar-navigation-menu__link--current{% endif %}">
+                  {{ collection.name }}
+                </a>
+                <span class="sidebar-navigation-menu__item-count">{{ collection.items_count }}</span>
+              </span>
+              {% if collection.has_children %}
+                <ul class="list-submenu">
+                  {% for child_collection in collection.children %}
+                    {% assign url = child_collection.url | strip %}
+                    <li class="list-menu__item">
+                      {% if child_collection.has_children %}
+                        <input type="checkbox" id="sidebar-navigation-menu-grandchild-{{child_collection.id}}{% if mode == "mobile" %}-mobile{% endif %}" {% if mode == "desktop" %}checked{% endif %}>
+                      {%  endif %}
+                      <span class="list-menu__item-wrapper">
+                        {% if child_collection.has_children %}
+                          <label for="sidebar-navigation-menu-grandchild-{{child_collection.id}}{% if mode == "mobile" %}-mobile{% endif %}">
+                            <i class="{% if current_url == url %}fa-solid fa-angle-down{%  else %}fa-regular fa-angle-down{% endif %} list-menu__item-caret"></i>
+                          </label>
+                        {%  endif %}
+                        <a href="{{ url }}" class="sidebar-navigation-menu__link {% if url == current_url %}sidebar-navigation-menu__link--current{% endif %}">
+                          {{ child_collection.name }}
+                        </a>
+                        <span class="sidebar-navigation-menu__item-count">{{ child_collection.items_count }}</span>
+                      </span>
+                      {% if child_collection.has_children %}
+                        <ul class="list-submenu">
+                          {% for grandchild_collection in child_collection.children %}
+                            {% assign url = grandchild_collection.url | strip %}
+                            <li class="list-menu__item">
+                              <a href="{{ url }}" class="sidebar-navigation-menu__link {% if url == current_url %}sidebar-navigation-menu__link--current{% endif %}">
+                                {{ grandchild_collection.name }}
+                              </a>
+                              <span class="sidebar-navigation-menu__item-count">{{ grandchild_collection.items_count }}</span>
+                            </li>
+                          {% endfor %}
+                        </ul>
+                      {% endif %}
+                    </li>
+                  {% endfor %}
+                </ul>
+              {% endif %}
+            </li>
+          {% endfor %}
+        </ul>
+      </div>
+    </div>
+  </div>
+</div>
