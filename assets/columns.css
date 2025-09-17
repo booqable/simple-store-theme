@@ -52,8 +52,6 @@
 .column-cleanstate__image {
   height: 320px;
 
-  border-radius: var(--border-radius-md);
-
   margin-bottom: 16px;
 }
 

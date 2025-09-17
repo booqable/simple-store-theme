@@ -88,8 +88,6 @@
   overflow: hidden;
 
   height: 400px;
-
-  border-radius: var(--border-radius-sm);
 }
 
 .collections__list--overlay .collection:after {

@@ -260,12 +260,6 @@
   vertical-align: baseline;
 }
 
-.bq-content.rx-content samp,
-.bq-content.rx-content kbd,
-.bq-content.rx-content code {
-  border-radius: 2px;
-}
-
 .bq-content.rx-content kbd {
   border: 1px solid rgba(0, 11, 29, 0.15);
   padding: .2em .4em;

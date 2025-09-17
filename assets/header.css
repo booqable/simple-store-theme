@@ -93,8 +93,6 @@
 
   background-color: var(--color-primary-background);
 
-  border-radius: var(--border-radius-sm);
-
   top: calc(100% + 5px);
   left: 0;
 
@@ -175,8 +173,6 @@
 
   transform: none;
   max-height: 0;
-
-  border-radius: 0;
 
   padding: 0;
 }
