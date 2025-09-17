@@ -207,6 +207,11 @@ bq-product-button {
   --add-button-input-border-radius: 0;
 }
 
+bq-product-gallery {
+  --product-gallery-thumbnail-border-radius: 0;
+  --product-gallery-control-border-radius: 0;
+}
+
 @media (max-width: 576px) {
   .product-page {
     flex-direction: column;
