@@ -47,11 +47,7 @@
     {% for block in section.blocks %}
       <div id="{{ block.id }}" class="columns__column post">
         {% if block.settings.image.url != blank %}
-          {% if block.settings.image_border_radius == true %}
-            {% assign class = "post__image post__image--border-radius" %}
-          {% else %}
-            {% assign class = "post__image" %}
-          {% endif %}
+          {% assign class = "post__image" %}
           {% case section.settings.columns_count %}
             {% when 1 %}
               {% assign widths = '700, 900, 1400' %}
@@ -90,7 +86,7 @@
       {{ "booqable://assets/background-mountains.jpeg" | image_tag:
         loading: 'lazy',
         widths: "700, 900, 1400",
-        class: "post__image post__image--border-radius"
+        class: "post__image"
       }}
       <div class="post__content">
         <h3 class="post__title post__title--size-{{ section.settings.heading_size }}">Column</h3>

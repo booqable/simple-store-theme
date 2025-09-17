@@ -11,7 +11,7 @@
   padding: 16px var(--horizontal-padding);
 }
 
-.date-location__inner bq-date-picker {
+bq-date-picker {
   --date-picker-box-shadow: 0 0 0 1px var(--color-grey-light);
   --date-picker-border-radius: 0;
 }
