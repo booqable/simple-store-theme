@@ -46,6 +46,7 @@
         {% endif %}
         <div class="collection-page__sidebar-navigation--mobile">
             {% render "collection-navigation", 
+              collections: non_system_collections, 
               mode: "mobile", 
               toggle: section.settings.sidebar_toggle, 
               root: routes.root_url,
