@@ -1,21 +1,13 @@
 {{ "collection-navigation.css" | asset_url | stylesheet_tag }}
 
-{% if mode == "mobile" %}
-  <input type="checkbox" id="sidebar-toggle">
-  <label for="sidebar-toggle" class="sidebar-toggle-element">
-    {{ toggle }}
-  </label>
-{% endif %}
-<div class="sidebar-navigation sidebar-navigation--sticky">
+<div class="sidebar-navigation{% if mode == "mobile" %} sidebar-navigation--mobile{% endif %} sidebar-navigation--sticky">
   <div class="sidebar-navigation__wrapper">
     {% if mode == "mobile" %}
       <div class="sidebar-navigation__header">
         <h2 class="sidebar-navigation__title">{{ toggle }}</h2>
-        <label for="sidebar-toggle">
-          <div class="sidebar-navigation__close">
-            <i class="fa-regular fa-xmark"></i>
-          </div>
-        </label>
+        <button class="sidebar-toggle sidebar-navigation__close" onclick="handleOpenCollectionMenu()">
+          <i class="fa-regular fa-xmark"></i>
+        </button>
       </div>
     {% endif %}
     <div class="sidebar-navigation__inner">
