@@ -225,3 +225,16 @@ bq-product-availability {
 [data-focus="true"] {
   box-shadow: 0 0 0 3px #395db899;
 }
+
+[class^="MiniCart-"] {
+  --minicart-border-radius: 0;
+}
+
+[class^="MiniCart-"] [class^="Dates-"] {
+  border-radius: 0;
+}
+
+[class^="CartPicker-"] > [class^="Picker-"] > [class^="Div-"] {
+  border-radius: 0;
+  box-shadow: none;
+}
