@@ -2,6 +2,7 @@
 {{ "list-menu.css" | asset_url | stylesheet_tag }}
 
 {% assign app = section.blocks | where: "type", "app" | first -%}
+{% assign current_url = request_fullpath | strip %}
 
 {% if app %}
   {{ "app.css" | asset_url | stylesheet_tag }}
@@ -75,6 +76,16 @@
 
   .header__wrapper--with-menu.header__wrapper--with-mini-cart {
     grid-template-columns: max-content 1fr max-content 50px{% if section.blocks.size > 0 %} repeat({{ section.blocks.size }}, max-content){% endif %};
+  }
+
+  @media (max-width: 991px) {
+    .header .header__wrapper--with-menu, .header .header__wrapper--with-mini-cart {
+      grid-template-columns: 1fr repeat({% if current_url == routes.root_url %}3 {%  else  %}2 {% endif %}, 50px);
+    }
+
+    .header .header__wrapper--with-menu.header__wrapper--with-mini-cart {
+      grid-template-columns: 1fr repeat({% if current_url == routes.root_url %}3 {%  else  %}2 {% endif %}, 50px);
+    }
   }
 </style>
 
@@ -180,6 +191,13 @@
     <div class="header-cart">
       {{ cart_button }}
       <i class="fa-regular fa-spinner-third fa-spin"></i>
+    </div>
+  {% endif %}
+  {% if current_url == routes.root_url %}
+    <div class="collection-floating-menu">
+      <button class="header-collection-floating-menu__trigger" onclick="handleOpenCollectionMenu()">
+        <i class="fa-regular fa-bars header-collection-floating-menu__icon open"></i>
+      </button>
     </div>
   {% endif %}
   {% if section.settings.menu != blank %}
