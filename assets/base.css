@@ -2,9 +2,6 @@
   /* Sizes */
   --max-width: 1216px;
   --horizontal-padding: 16px;
-  --border-radius-sm: 8px;
-  --border-radius-md: 12px;
-  --border-radius-lg: 20px;
   /* Colors */
   --color-primary: #395DB8;
   --color-blue-background: #D7E2FF;
@@ -104,8 +101,6 @@ input {
 }
 
 .bq-button--solid {
-  border-radius: var(--border-radius-sm);
-
   text-decoration: none;
 }
 
@@ -178,7 +173,6 @@ input {
     var(--color-border) 6px,
     var(--color-border) 7px
   );
-  border-radius: 12px;
 }
 
 .spacer__inner--preview span {
@@ -201,8 +195,6 @@ input {
   background-color: var(--color-image-placeholder);
 
   padding: 8px 0;
-
-  border-radius: var(--border-radius-sm);
 }
 
 .text {
@@ -224,4 +216,9 @@ bq-product-availability {
 
 [data-focus="true"] {
   box-shadow: 0 0 0 3px #395db899;
+}
+
+#cc-main .cm {
+  box-shadow: none !important;
+  border: 1px solid var(--color-grey-light);
 }

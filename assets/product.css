@@ -84,7 +84,6 @@
   line-height: 21px;
   font-weight: var(--font-weight-bold);
   padding: 2px 12px;
-  border-radius: var(--border-radius-md);
 }
 
 .product bq-product-price-label, .bq-product-price-label {
