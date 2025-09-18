@@ -11,10 +11,6 @@
   height: auto;
 }
 
-.post__image--border-radius {
-  border-radius: var(--border-radius-sm);
-}
-
 .post__title {
   color: var(--color-primary-foreground);
 

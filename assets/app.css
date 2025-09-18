@@ -13,7 +13,6 @@
 
 .app__preview {
   height: 200px;
-  border-radius: var(--border-radius-sm);
   background-image: repeating-linear-gradient(
     315deg,
     var(--color-primary-background),
@@ -41,7 +40,6 @@
   align-items: center;
   height: 40px;
   padding: 0 10px;
-  border-radius: var(--border-radius-sm);
   border: 1px solid var(--color-grey-light);
 }
 
@@ -58,10 +56,6 @@
   fill: var(--color-primary-foreground) !important;
 }
 
-.app-mobile .weglot-widget__wrapper {
-  border-radius: var(--border-radius-sm) !important;
-}
-
 .weglot-widget {
   justify-content: flex-start !important;
 }
@@ -75,7 +69,6 @@
 }
 
 .weglot-widget__dropdown {
-  border-radius: var(--border-radius-sm) !important;
   box-shadow: 0 0 8px var(--color-grey-light) !important;
 }
 
@@ -109,7 +102,6 @@
 
   .accessibe-widget .accessibe-widget__wrapper {
     justify-content: center;
-    border-radius: var(--border-radius-lg);
   }
 
   .app-desktop .accessibe-widget .accessibe-widget__wrapper {
