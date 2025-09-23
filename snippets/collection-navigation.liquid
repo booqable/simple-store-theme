@@ -31,7 +31,7 @@
                     <i class="{% if current_url == url %}fa-solid fa-angle-down{%  else %}fa-regular fa-angle-down{% endif %} list-menu__item-caret"></i>
                   </label>
                 {%  endif %}
-                <a href="{{ url }}" class="sidebar-navigation-menu__link {% if current_url == url %}sidebar-navigation-menu__link--current{% endif %}">
+                <a href="{{ url }}" class="sidebar-navigation-menu__link {% if current_url == url %}sidebar-navigation-menu__link--current{% endif %} {% if collection.has_children %} sidebar-navigation-menu__link--with-children{% endif %}">
                   {{ collection.name }}
                 </a>
                 <span class="sidebar-navigation-menu__item-count">{{ collection.items_count }}</span>

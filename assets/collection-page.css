@@ -9,6 +9,7 @@
 .collection-page__wrapper--with-sidebar {
   display: grid;
   grid-template-columns: 1fr;
+  padding-top: 24px;
 }
 
 .collection-page__sidebar-navigation {
@@ -20,7 +21,7 @@
   align-items: center;
   justify-content: space-between;
 
-  margin-bottom: 24px;
+  margin-bottom: 12px;
 }
 
 .collection-page__title {
@@ -70,7 +71,7 @@
 
   .collection-page__wrapper--with-sidebar {
     grid-template-columns: 220px 1fr;
-    gap: 20px;
+    gap: 40px;
   }
 }
 

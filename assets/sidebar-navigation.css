@@ -99,8 +99,8 @@
 
 .sidebar-navigation .list-menu__item-caret {
   margin-left: auto;
-
-  font-size: 14px;
+  padding-right: 6px;
+  font-size: 21px;
 }
 
 .sidebar-navigation .list-submenu .list-menu__item-caret {
