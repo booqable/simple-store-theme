@@ -34,12 +34,6 @@ const handleOnSelectChange = (event) => {
   const value = event.target.value;
   const url = new URL(window.location.href);
 
-  if (value === 'default') {
-    url.searchParams.delete("sort_by");
-    window.location.href = url.href;
-    return;
-  }
-
   if (url.searchParams.get("sort_by")) {
     url.searchParams.set("sort_by", value);
     window.location.href = url.href;
