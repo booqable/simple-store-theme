@@ -107,6 +107,14 @@ const handleScroll = () => {
   }
 };
 
+const handleOpenCollectionMenu = () => {
+  const sidebar = document.querySelector(".sidebar-navigation--mobile");
+
+  if (!sidebar) return;
+
+  sidebar.classList.toggle("sidebar-navigation--open");
+}
+
 document.addEventListener("DOMContentLoaded", () => {
   // Initializers
   initSearch();
