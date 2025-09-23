@@ -164,10 +164,6 @@
   width: 35%;
 }
 
-.sidebar-navigation .list-menu > .list-menu__item {
-  padding: 3px 0;
-}
-
 .sidebar-navigation
   .list-menu
   .list-submenu
@@ -254,7 +250,7 @@
   .sidebar-navigation .list-menu > .list-menu__item {
     border-bottom: 1px solid var(--color-grey-light);
 
-    padding: 12px var(--horizontal-padding);
+    padding: 8px var(--horizontal-padding);
   }
 
   .sidebar-navigation .list-menu .list-submenu .list-submenu > .list-menu__item {
