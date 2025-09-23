@@ -2,7 +2,7 @@
   max-width: calc(var(--max-width) + var(--horizontal-padding) * 2 + 10px);
   width: 100%;
 
-  margin: 16px auto;
+  margin: 40px auto;
   padding: 0 var(--horizontal-padding);
 }
 
@@ -47,6 +47,12 @@
 
 .collection-page__items .product {
   max-width: none;
+}
+
+.sorting-select-wrapper {
+  display: flex;
+  justify-content: flex-end;
+  margin-bottom: 24px;
 }
 
 @media (min-width: 576px) {
