@@ -30,6 +30,42 @@ const initFocalImages = () => {
   });
 };
 
+const handleOnSelectChange = (event) => {
+  const value = event.target.value;
+  const url = new URL(window.location.href);
+
+  if (value === 'default') {
+    url.searchParams.delete("sort_by");
+    window.location.href = url.href;
+    return;
+  }
+
+  if (url.searchParams.get("sort_by")) {
+    url.searchParams.set("sort_by", value);
+    window.location.href = url.href;
+    return;
+  }
+    
+  window.location.href += `?sort_by=${value}`;
+};
+
+const initSelect = () => {
+  const select = document.querySelector("#sorting");
+  const url = new URL(window.location.href);
+
+  if (!!url.searchParams.get("sort_by")) {
+    select.value = url.searchParams.get("sort_by");
+  } else {
+    // Use the default value from the shop setting if no URL parameter
+    const defaultValue = select.getAttribute("default-value");
+    if (defaultValue && defaultValue !== 'default') {
+      handleOnSelectChange({ target: { value: defaultValue } });
+    }
+  }
+
+  select.addEventListener("change", handleOnSelectChange);
+};
+
 const initSearch = () => {
   const searchForm = document.querySelector("#search");
   const url = new URL(window.location.href);
@@ -118,6 +154,7 @@ const handleOpenCollectionMenu = () => {
 document.addEventListener("DOMContentLoaded", () => {
   // Initializers
   initSearch();
+  initSelect();
   handleSetMobileMenuHeight();
 });
 
