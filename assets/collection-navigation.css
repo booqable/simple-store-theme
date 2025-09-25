@@ -192,7 +192,7 @@
   padding-left: 16px;
 }
 
-@media (max-width: 991px) {
+@media (max-width: 990px) {
   .sidebar-navigation {
     position: fixed;
 

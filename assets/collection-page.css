@@ -51,16 +51,8 @@
 }
 
 @media (min-width: 576px) {
-  .collection-page__sidebar-navigation {
-    display: block;
-  }
-
   .collection-page__items .product {
     max-width: 320px;
-  }
-
-  .collection-page__sidebar-navigation--mobile {
-    display: none;
   }
 
   .collection-page__items {
@@ -68,19 +60,25 @@
 
     gap: 24px;
   }
-
-  .collection-page__wrapper--with-sidebar {
-    grid-template-columns: 220px 1fr;
-    gap: 40px;
-  }
 }
 
 @media (min-width: 810px) {
   .collection-page__items {
     gap: 32px;
   }
+}
 
+@media (min-width: 991px) {
   .collection-page__wrapper--with-sidebar {
     grid-template-columns: 280px 1fr;
+    gap: 40px;
+  }
+
+  .collection-page__sidebar-navigation {
+    display: block;
+  }
+
+  .collection-page__sidebar-navigation--mobile {
+    display: none;
   }
 }
