@@ -475,6 +475,14 @@
   }
 }
 
+@media (max-width: 990px) {
+.collection-floating-menu {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+}
+
 @media (max-width: 991px) {
   .header__nav--desktop {
     display: none;
@@ -535,8 +543,7 @@
     transition: visibility 0s linear 0s, opacity 300ms, transform 250ms;
   }
 
-  .header-floating-menu,
-  .collection-floating-menu {
+  .header-floating-menu {
     display: flex;
     align-items: center;
     justify-content: center;

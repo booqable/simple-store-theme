@@ -78,7 +78,7 @@
     grid-template-columns: max-content 1fr max-content 50px{% if section.blocks.size > 0 %} repeat({{ section.blocks.size }}, max-content){% endif %};
   }
 
-  @media (max-width: 991px) {
+  @media (max-width: 990px) {
     .header .header__wrapper--with-menu, .header .header__wrapper--with-mini-cart {
       grid-template-columns: 1fr repeat({% if current_url == routes.root_url %}3 {%  else  %}2 {% endif %}, 50px);
     }
