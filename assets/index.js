@@ -39,24 +39,12 @@ const handleOnSelectChange = (event) => {
     window.location.href = url.href;
     return;
   }
-    
+
   window.location.href += `?sort_by=${value}`;
 };
 
-const initSelect = () => {
+const initSortingSelect = () => {
   const select = document.querySelector("#sorting");
-  const url = new URL(window.location.href);
-
-  if (!!url.searchParams.get("sort_by")) {
-    select.value = url.searchParams.get("sort_by");
-  } else {
-    // Use the default value from the shop setting if no URL parameter
-    const defaultValue = select.getAttribute("default-value");
-    if (defaultValue && defaultValue !== 'default') {
-      handleOnSelectChange({ target: { value: defaultValue } });
-    }
-  }
-
   select.addEventListener("change", handleOnSelectChange);
 };
 
@@ -148,7 +136,7 @@ const handleOpenCollectionMenu = () => {
 document.addEventListener("DOMContentLoaded", () => {
   // Initializers
   initSearch();
-  initSelect();
+  initSortingSelect();
   handleSetMobileMenuHeight();
 });
 
