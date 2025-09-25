@@ -95,7 +95,8 @@
 }
 
 .sidebar-navigation .list-menu__item-caret {
-  font-size: 16px;
+  padding-right: 6px;
+  font-size: 20px;
 }
 
 .sidebar-navigation .list-submenu .list-menu__item-caret {
@@ -122,6 +123,10 @@
   color: var(--color-primary-foreground);
 
   text-decoration: none;
+}
+
+.sidebar-navigation-menu__link--with-children {
+  font-weight: 600;
 }
 
 .sidebar-navigation-menu__item-count {
@@ -165,7 +170,11 @@
 }
 
 .sidebar-navigation .list-menu > .list-menu__item {
-  padding: 3px 0;
+  padding: 8px 0;
+}
+
+.sidebar-navigation .list-submenu > .list-menu__item {
+  padding: 8px 0;
 }
 
 .sidebar-navigation
