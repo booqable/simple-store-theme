@@ -41,9 +41,6 @@
     </div>
     <div class="collection-page__inner">
       <div class="collection-page__header">
-        {% if section.settings.show_collection_name %}
-          <h1 class="collection-page__title">{{ collection.name }}</h1>
-        {% endif %}
         <div class="collection-page__sidebar-navigation--mobile">
             {% render "collection-navigation", 
               collections: non_system_collections, 
@@ -106,12 +103,6 @@
     {
       "type": "header",
       "content": "Collection"
-    },
-    {
-      "type": "checkbox",
-      "id": "show_collection_name",
-      "label": "Show collection name",
-      "default": true
     },
     {
       "type": "checkbox",
