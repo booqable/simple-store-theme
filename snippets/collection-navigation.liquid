@@ -16,7 +16,6 @@
           <li class="list-menu__item">
             <span class="list-menu__item-wrapper">
               <a href="{{ root }}" class="sidebar-navigation-menu__link">{{ all_products.name }}</a>
-              <span class="sidebar-navigation-menu__item-count">{{ all_products.items_count }}</span>
             </span>
           </li>
           {% for collection in collections %}
@@ -34,7 +33,6 @@
                 <a href="{{ url }}" class="sidebar-navigation-menu__link {% if current_url == url %}sidebar-navigation-menu__link--current{% endif %} {% if collection.has_children %} sidebar-navigation-menu__link--with-children{% endif %}">
                   {{ collection.name }}
                 </a>
-                <span class="sidebar-navigation-menu__item-count">{{ collection.items_count }}</span>
               </span>
               {% if collection.has_children %}
                 <ul class="list-submenu">
@@ -53,7 +51,6 @@
                         <a href="{{ url }}" class="sidebar-navigation-menu__link {% if url == current_url %}sidebar-navigation-menu__link--current{% endif %}">
                           {{ child_collection.name }}
                         </a>
-                        <span class="sidebar-navigation-menu__item-count">{{ child_collection.items_count }}</span>
                       </span>
                       {% if child_collection.has_children %}
                         <ul class="list-submenu">
@@ -63,7 +60,6 @@
                               <a href="{{ url }}" class="sidebar-navigation-menu__link {% if url == current_url %}sidebar-navigation-menu__link--current{% endif %}">
                                 {{ grandchild_collection.name }}
                               </a>
-                              <span class="sidebar-navigation-menu__item-count">{{ grandchild_collection.items_count }}</span>
                             </li>
                           {% endfor %}
                         </ul>
