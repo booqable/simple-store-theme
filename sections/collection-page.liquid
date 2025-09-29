@@ -51,7 +51,11 @@
         </div>
       </div>
       {% if collection.items_count > 0 %}
-        {% assign paginate_object = collection.items %}
+        <div class="sorting-select-wrapper">
+          {% assign options = "default:Standard,price_each_in_cents:Price (asc),-price_each_in_cents:Price (desc),-created_at:Newest First" | split: "," %}
+          {% render 'sorting-select' options: options, default_value: products_sort_order %}
+        </div>
+        {% assign paginate_object = items %}
         {% paginate paginate_object %}
           <div class="collection-page__items"{% if card_image_fit != blank %} style="{{- image_variables | escape -}}"{% endif %}>
             {% for item in paginate_object %}

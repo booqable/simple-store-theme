@@ -1,0 +1,10 @@
+{{ "sorting.css" | asset_url | stylesheet_tag }}
+
+<select id="sorting" class="sorting-select">
+  {% for option in options %}
+    {%  assign option_parts = option | split: ":" %}
+    {%  assign value = option_parts[0] %}
+    {%  assign label = option_parts[1] %}
+    <option value="{{ value }}" {% if value == default_value %}SELECTED{% endif %}>{{ label }}</option>
+  {% endfor %}
+</select>

@@ -30,6 +30,24 @@ const initFocalImages = () => {
   });
 };
 
+const handleOnSelectChange = (event) => {
+  const value = event.target.value;
+  const url = new URL(window.location.href);
+
+  if (url.searchParams.get("sort_by")) {
+    url.searchParams.set("sort_by", value);
+    window.location.href = url.href;
+    return;
+  }
+
+  window.location.href += `?sort_by=${value}`;
+};
+
+const initSortingSelect = () => {
+  const select = document.querySelector("#sorting");
+  select.addEventListener("change", handleOnSelectChange);
+};
+
 const initSearch = () => {
   const searchForm = document.querySelector("#search");
   const url = new URL(window.location.href);
@@ -118,6 +136,7 @@ const handleOpenCollectionMenu = () => {
 document.addEventListener("DOMContentLoaded", () => {
   // Initializers
   initSearch();
+  initSortingSelect();
   handleSetMobileMenuHeight();
 });
 
