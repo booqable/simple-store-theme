@@ -9,6 +9,8 @@
 
   margin: 0 auto;
   padding: 16px var(--horizontal-padding);
+
+  min-height: 108px;
 }
 
 bq-date-picker {

@@ -11,11 +11,9 @@
   transition: max-height 200ms;
 }
 
-.list-menu__item [id^="sidebar-navigation-menu-child-"]:checked + label .list-menu__item-caret,
-.list-menu__item [id^="sidebar-navigation-menu-grandchild-"]:checked + label .list-menu__item-caret {
+[id^="sidebar-navigation-menu-child-"]:checked + .list-menu__item-wrapper .list-menu__item-caret,
+[id^="sidebar-navigation-menu-grandchild-"]:checked + .list-menu__item-wrapper .list-menu__item-caret {
   transform: rotate(180deg);
-
-  transition: transform 150ms;
 }
 
 .sidebar-toggle {
@@ -95,7 +93,6 @@
 }
 
 .sidebar-navigation .list-menu__item-caret {
-  padding-right: 6px;
   font-size: 20px;
 }
 

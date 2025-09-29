@@ -19,6 +19,7 @@
 .list-menu__item-caret {
   transform: rotate(0);
 
+  transform-origin: center;
   transition: transform 150ms;
 }
 
