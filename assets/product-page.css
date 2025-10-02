@@ -105,7 +105,7 @@ bq-product-availability-calendar {
 .product-gallery {
   overflow: hidden;
 
-  flex: 0 0 45%;
+  flex: 0 0 55%;
 
   position: relative;
 }
