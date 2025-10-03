@@ -13,7 +13,6 @@
 
     {% if product.description != blank and section.settings.description_placement == "top" %}
       <div class="product-description">
-        <p class="product-description__label">{{ section.settings.description_label }}</p>
         <div class="product-description__content-container bq-content rx-content">
           {{ product.description }}
         </div>
@@ -37,7 +36,6 @@
   </div>
   {% if product.description != blank and section.settings.description_placement == "bottom" %}
     <div class="product-description">
-      <p class="product-description__label">{{ section.settings.description_label }}</p>
       <div class="product-description__content-container bq-content rx-content">
         {{ product.description }}
       </div>
