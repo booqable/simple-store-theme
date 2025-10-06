@@ -3,7 +3,7 @@
   width: 100%;
 
   margin: 0 auto;
-  padding: 16px var(--horizontal-padding);
+  padding: 40px var(--horizontal-padding);
 }
 
 .search__title {

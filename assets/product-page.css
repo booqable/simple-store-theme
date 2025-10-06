@@ -1,13 +1,16 @@
 .product-page {
-  display: flex;
-  justify-content: space-between;
-  gap: 32px;
-
   max-width: calc(var(--max-width) + var(--horizontal-padding) * 2);
   width: 100%;
 
   margin: 0 auto;
   padding: 40px var(--horizontal-padding);
+}
+
+.product-page__layout {
+  display: flex;
+  justify-content: space-between;
+  gap: 32px;
+  width: 100%;
 }
 
 .product-details {
