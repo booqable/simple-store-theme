@@ -9,7 +9,6 @@
 .collection-page__wrapper--with-sidebar {
   display: grid;
   grid-template-columns: 1fr;
-  padding-top: 24px;
 }
 
 .collection-page__sidebar-navigation {
