@@ -1,10 +1,16 @@
 {{ "sorting.css" | asset_url | stylesheet_tag }}
 
 <select id="sorting" class="sorting-select">
-  {% for option in options %}
-    {%  assign option_parts = option | split: ":" %}
-    {%  assign value = option_parts[0] %}
-    {%  assign label = option_parts[1] %}
-    <option value="{{ value }}" {% if value == default_value %}SELECTED{% endif %}>{{ label }}</option>
-  {% endfor %}
+  <option value="default" {% if default_value == "default" %}SELECTED{% endif %}>
+    {{ "store.sorting_standard" | user_t }}
+  </option>
+  <option value="price_each_in_cents" {% if default_value == "price_each_in_cents" %}SELECTED{% endif %}>
+    {{ "store.sorting_price_ascending" | user_t }}
+  </option>
+  <option value="-price_each_in_cents" {% if default_value == "-price_each_in_cents" %}SELECTED{% endif %}>
+    {{ "store.sorting_price_descending" | user_t }}
+  </option>
+  <option value="-created_at" {% if default_value == "-created_at" %}SELECTED{% endif %}>
+    {{ "store.sorting_newest" | user_t }}
+  </option>
 </select>
