@@ -59,7 +59,7 @@ bq-product-price-label {
 
   font-family: var(--font-body);
 
-  color: var(--color-placeholder);
+  color: var(--color-grey-dark);
 }
 
 bq-product-variations-select {
