@@ -16,4 +16,5 @@
 bq-date-picker {
   --date-picker-box-shadow: 0 0 0 1px var(--color-grey-light);
   --date-picker-border-radius: 0;
+  --date-picker-value-size: 0.85rem;
 }
