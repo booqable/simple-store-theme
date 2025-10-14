@@ -32,6 +32,7 @@
 }
 
 .header__link {
+  display: block;
   text-decoration: none;
 
   color: var(--color-primary-foreground);
@@ -47,6 +48,7 @@
 }
 
 .header__image-logo {
+  display: block;
   max-width: 250px;
   max-height: 75px;
 }
