@@ -193,7 +193,7 @@
         "type": "checkbox",
         "id": "cookie_notice_activated",
         "label": "Show cookie notice",
-        "default": true
+        "default": false
       },
       {
         "type": "header",
