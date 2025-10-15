@@ -31,12 +31,6 @@
   background-color: var(--color-primary-background);
 }
 
-.sidebar-navigation--sticky {
-  position: sticky;
-
-  top: 75px;
-}
-
 .sidebar-navigation__header {
   display: flex;
   align-items: center;
@@ -118,10 +112,6 @@
   text-decoration: none;
 }
 
-.sidebar-navigation-menu__link--with-children {
-  font-weight: 600;
-}
-
 .sidebar-navigation-menu__item-count {
   margin-left: 6px;
 
@@ -178,11 +168,11 @@
   padding-bottom: 0;
 }
 .sidebar-navigation .list-submenu {
-  padding-left: 16px;
+  padding-left: 24px;
 }
 
 .sidebar-navigation .list-submenu .list-submenu {
-  padding-left: 16px;
+  padding-left: 24px;
 }
 
 @media (max-width: 990px) {
