@@ -112,10 +112,6 @@
   text-decoration: none;
 }
 
-.sidebar-navigation-menu__link--with-children {
-  font-weight: 600;
-}
-
 .sidebar-navigation-menu__item-count {
   margin-left: 6px;
 
@@ -172,11 +168,11 @@
   padding-bottom: 0;
 }
 .sidebar-navigation .list-submenu {
-  padding-left: 16px;
+  padding-left: 24px;
 }
 
 .sidebar-navigation .list-submenu .list-submenu {
-  padding-left: 16px;
+  padding-left: 24px;
 }
 
 @media (max-width: 990px) {
