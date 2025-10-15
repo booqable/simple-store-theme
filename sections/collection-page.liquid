@@ -68,14 +68,21 @@
                 {% assign focal = image.coordinates %}
               {% endif %}
               <div class="product">
-                <a href="{{ item.url }}" class="product__image-container">{% if image != blank %}{{ image.url | image_tag:
-                  loading: 'lazy',
-                  class: 'product__image',
-                  widths: '500, 700',
-                  sizes: '(max-width: 489px) 700px, 500px',
-                  focal: focal,
-                  alt: item.name
-                }}{% endif %}</a>
+                <a href="{{ item.url }}" class="product__image-container">
+                  {% if image != blank %}
+                    {% assign image = image.url  %}
+                  {% else %}
+                    {% assign image = 'booqable://assets/product-placeholder.png' %}
+                  {% endif %}
+                  {{ image | image_tag:
+                    loading: 'lazy',
+                    class: 'product__image',
+                    widths: '500, 700',
+                    sizes: '(max-width: 489px) 700px, 500px',
+                    focal: focal,
+                    alt: item.name
+                  }}
+                </a>
                 {{ item | product_availability }}
                 <a class="product__link" href="{{ item.url }}">
                   <h3 class="product__name">{{ item.name }}</h3>
