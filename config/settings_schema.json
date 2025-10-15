@@ -91,7 +91,7 @@
             "label": "Contain"
           }
         ],
-        "default": "contain"
+        "default": "cover"
       },
       {
         "type": "checkbox",
