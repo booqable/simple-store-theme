@@ -31,12 +31,6 @@
   background-color: var(--color-primary-background);
 }
 
-.sidebar-navigation--sticky {
-  position: sticky;
-
-  top: 75px;
-}
-
 .sidebar-navigation__header {
   display: flex;
   align-items: center;
