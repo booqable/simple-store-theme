@@ -97,7 +97,8 @@
         "type": "checkbox",
         "id": "use_focal_images",
         "label": "Use focal images",
-        "info": "Display point focused image instead of full sized. Overwrites the 'Image fit' values."
+        "info": "Display point focused image instead of full sized. Overwrites the 'Image fit' values.",
+        "default": true
       },
       {
         "type": "header",
@@ -117,7 +118,7 @@
             "label": "Contain"
           }
         ],
-        "default": "cover"
+        "default": "contain"
       },
       {
         "type": "checkbox",
