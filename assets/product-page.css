@@ -8,6 +8,7 @@
 
 .product-page__layout {
   display: flex;
+  flex-direction: column;
   justify-content: space-between;
   gap: 32px;
   width: 100%;
@@ -249,5 +250,11 @@ bq-product-gallery {
 
 bq-product-button {
     --add-button-button-max-width: 100%;
+  }
+}
+
+@media screen and (min-width: 768px) {
+  .product-page__layout {
+    flex-direction: row;
   }
 }
