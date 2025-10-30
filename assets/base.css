@@ -241,4 +241,11 @@ bq-product-availability {
   text-decoration: none;
   color: var(--color-grey-dark);
   margin-bottom: 0.5rem;
+  padding: 0 var(--horizontal-padding);
+}
+
+@media screen and (min-width: 577px) {
+  .bq-breadcrumb {
+    padding: 0;
+  }
 }
