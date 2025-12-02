@@ -11,13 +11,11 @@
     </a>
   </span>
   {% for part in paginate.parts %}
-    {% assign title_to_page = part.title | times: 1 %}
-    {% assign current_to_page = paginate.current_page | times: 1 %}
     {% if part.is_link %}
       <span class="page">
         {{ part.title | link_to: part.url }}
       </span>
-    {% elsif current_to_page == title_to_page %}
+    {% elsif part.title == paginate.current_page %}
       <span class="page current">
         {{ part.title }}
       </span>
