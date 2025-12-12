@@ -1,34 +1,5 @@
-let focalImageTimeout;
 let previewBarTimeout;
 let tryCount = 0;
-
-const initFocalImages = () => {
-  if (!window.imageFocus) {
-    if (focalImageTimeout) clearTimeout(focalImageTimeout);
-
-    focalImageTimeout = setTimeout(() => {
-      initFocalImages();
-    }, 10);
-
-    return;
-  }
-
-  clearTimeout(focalImageTimeout);
-
-  document.querySelectorAll(".focal-image").forEach((focalImage) => {
-    const x = focalImage.getAttribute("data-focal-x");
-    const y = focalImage.getAttribute("data-focal-y");
-
-    new window.imageFocus(focalImage, {
-      focus: {
-        x: parseFloat(x) || 0,
-        y: parseFloat(y) || 0,
-      },
-    });
-
-    focalImage.style.opacity = 1;
-  });
-};
 
 const handleOnSelectChange = (event) => {
   const value = event.target.value;
@@ -139,8 +110,6 @@ document.addEventListener("DOMContentLoaded", () => {
   initSortingSelect();
   handleSetMobileMenuHeight();
 });
-
-window.addEventListener("load", initFocalImages);
 
 window.addEventListener("resize", () => {
   handleSetMobileMenuHeight();
