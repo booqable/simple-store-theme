@@ -22,12 +22,6 @@
         --object-fit: contain;
     {% endcase %}
   {% endcapture %}
-
-  {% if settings.use_focal_images %}
-    {% capture image_variables %}
-      --object-fit: cover;
-    {% endcapture %}
-  {% endif %}
   {%  assign collections_size = non_system_collections | size %}
   {% comment %} CSS variables end {% endcomment %}
 
