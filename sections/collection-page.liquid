@@ -22,12 +22,6 @@
         --object-fit: contain;
     {% endcase %}
   {% endcapture %}
-
-  {% if settings.use_focal_images %}
-    {% capture image_variables %}
-      --object-fit: cover;
-    {% endcapture %}
-  {% endif %}
   {%  assign collections_size = non_system_collections | size %}
   {% comment %} CSS variables end {% endcomment %}
 
@@ -64,8 +58,10 @@
           <div class="collection-page__items"{% if card_image_fit != blank %} style="{{- image_variables | escape -}}"{% endif %}>
             {% for item in paginate_object %}
               {% assign image = item.images.first %}
-              {% if settings.use_focal_images %}
+              {% if settings.use_focal_images and card_image_fit == "cover" %}
                 {% assign focal = image.coordinates %}
+              {% else %}
+                {% assign focal = nil %}
               {% endif %}
               <div class="product">
                 <a href="{{ item.url }}" class="product__image-container">
