@@ -16,6 +16,8 @@ const handleOnSelectChange = (event) => {
 
 const initSortingSelect = () => {
   const select = document.querySelector("#sorting");
+  if (!select) return;
+
   select.addEventListener("change", handleOnSelectChange);
 };
 
