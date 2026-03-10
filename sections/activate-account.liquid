@@ -7,15 +7,15 @@
   </div>
 
   <h3 class="account__title account__title--centered">
-    {{ section.settings.title }}
+    {{ "auth.user_confirmed" | user_t }}
   </h3>
 
   <div class="description description--centered">
-    {{ section.settings.description }}
+    {{ "auth.user_confirmed_description" | user_t }}
   </div>
 
   <a href="{{ routes.login_url }}" class="account__button account__button--primary">
-    {{ section.settings.button_login_label }}
+    {{ "auth.sign_in_button" | user_t }}
   </a>
 
 </div>
@@ -26,26 +26,6 @@
     "important": true,
     "unique": true,
     "templates": ["activate-account"],
-    "settings": [
-      {
-        "type": "header",
-        "content": "Translations"
-      }, {
-        "id": "title",
-        "type": "text",
-        "label": "Title",
-        "default": "Account confirmed"
-      }, {
-        "id": "description",
-        "type": "text",
-        "label": "Description",
-        "default": "Your account has been confirmed. You can now log in and continue using the website."
-      }, {
-        "id": "button_login_label",
-        "type": "text",
-        "label": "Login button label",
-        "default": "Log in"
-      }
-    ]
+    "settings": []
   }
 {% endschema %}
