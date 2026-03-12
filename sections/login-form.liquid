@@ -1,13 +1,11 @@
 {{ "account.css" | asset_url | stylesheet_tag }}
 
 <div class="account">
-  <h3 class="account__title">{{ section.settings.title }}</h3>
+  <h3 class="account__title">{{ "auth.sign_in.title" | user_t }}</h3>
 
-  {% if section.settings.description %}
-    <div class="account__divider">
-      {{ section.settings.description }}
-    </div>
-  {% endif %}
+  <div class="account__divider">
+    {{ "auth.sign_in.description" | user_t }}
+  </div>
 
   {%- if alert -%}
     <div class="account__alert account__alert--danger">{{ alert }}</div>
@@ -19,7 +17,7 @@
 
   {% form 'login' %}
     <div>
-      <label for="user_email" class="account-fieldset__label">{{ section.settings.email_label }}</label>
+      <label for="user_email" class="account-fieldset__label">{{ "auth.fields.email" | user_t }}</label>
       <input
         value="{{ form.email }}"
         class="account-fieldset__input"
@@ -32,7 +30,7 @@
     </div>
 
     <div>
-      <label for="user_password" class="account-fieldset__label">{{ section.settings.password_label }}</label>
+      <label for="user_password" class="account-fieldset__label">{{ "auth.fields.password" | user_t }}</label>
       <input
         value="{{ form.password }}"
         class="account-fieldset__input"
@@ -44,7 +42,7 @@
     </div>
 
     <div class="account__divider">
-      <a href="{{ routes.new_reset_password_url }}" class="account__link">{{ section.settings.reset_password_label }}</a>
+      <a href="{{ routes.new_reset_password_url }}" class="account__link">{{ "auth.forgot_password_button" | user_t }}</a>
     </div>
 
     <div class="account__divider">
@@ -52,18 +50,18 @@
         type="submit"
         class="account__button account__button--primary"
         name="commit"
-        value="{{ section.settings.button_login_label }}"
+        value="{{ "auth.sign_in_button" | user_t }}"
       >
     </div>
 
     <hr class="account__separator" />
 
     {%- if shop.allow_signup -%}
-      <a href="{{ routes.register_url }}" class="account__button account__button--secondary account__divider">{{ section.settings.create_account_label }}</a>
+      <a href="{{ routes.register_url }}" class="account__button account__button--secondary account__divider">{{ "auth.sign_in.create_account" | user_t }}</a>
     {%- endif -%}
 
     {%- if shop.allow_guest_checkout and guest_checkout_url -%}
-      <a href="{{ guest_checkout_url }}" class="account__button account__button--minimal">{{ section.settings.continue_as_guest_label }}</a>
+      <a href="{{ guest_checkout_url }}" class="account__button account__button--minimal">{{ "auth.sign_in.continue_as_guest" | user_t }}</a>
     {%- endif -%}
 
   {% endform %}
@@ -75,54 +73,6 @@
     "important": true,
     "unique": true,
     "templates": ["login"],
-    "settings": [
-      {
-        "type": "header",
-        "content": "Translations"
-      },
-      {
-        "id": "title",
-        "type": "text",
-        "label": "Title",
-        "default": "Log in"
-      },
-      {
-        "id": "description",
-        "type": "text",
-        "label": "Description",
-        "default": ""
-      },
-      {
-        "id": "email_label",
-        "type": "text",
-        "label": "Email field label",
-        "default": "Email"
-      }, {
-        "id": "password_label",
-        "type": "text",
-        "label": "Password field label",
-        "default": "Password"
-      }, {
-        "id": "button_login_label",
-        "type": "text",
-        "label": "Log in button label",
-        "default": "Log in"
-      }, {
-        "id": "create_account_label",
-        "type": "text",
-        "label": "Create account button label",
-        "default": "Create an account"
-      }, {
-        "id": "reset_password_label",
-        "type": "text",
-        "label": "Reset password link label",
-        "default": "Forgot your password?"
-      }, {
-        "id": "continue_as_guest_label",
-        "type": "text",
-        "label": "Continue as guest link label",
-        "default": "Continue as guest"
-      }
-    ]
+    "settings": []
   }
 {% endschema %}

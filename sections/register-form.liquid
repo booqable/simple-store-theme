@@ -1,11 +1,11 @@
 {{ "account.css" | asset_url | stylesheet_tag }}
 
 <div class="account">
-  <h3 class="account__title">{{ section.settings.title }}</h3>
+  <h3 class="account__title">{{ "auth.sign_up.title" | user_t }}</h3>
   <div class="account__divider">
-    {{ section.settings.login_description }}
+    {{ "auth.sign_up.already_have_an_account" | user_t }}
     <a class="account__link" href="{{ routes.login_url }}">
-      {{ section.settings.login_link_label }}
+      {{ "auth.sign_in_button" | user_t }}
     </a>
   </div>
 
@@ -15,7 +15,7 @@
 
   {% form 'register' %}
     <div class="{% if form.errors.name %}account-fieldset--error{% endif %}">
-      <label for="user_name" class="account-fieldset__label">{{ section.settings.name_label }}</label>
+      <label for="user_name" class="account-fieldset__label">{{ "auth.fields.full_name" | user_t }}</label>
       <input
         value="{{ form.name }}"
         placeholder=" "
@@ -29,7 +29,7 @@
     </div>
 
     <div class="{% if form.errors.email %}account-fieldset--error{% endif %}">
-      <label for="user_email" class="account-fieldset__label">{{ section.settings.email_label }}</label>
+      <label for="user_email" class="account-fieldset__label">{{ "auth.fields.email" | user_t }}</label>
       <input
         value="{{ form.email }}"
         placeholder=" "
@@ -41,15 +41,17 @@
       <div class="account__error-message">{{ form.errors.email }}</div>
     </div>
 
+    {%- assign password_label = "auth.fields.password" | user_t -%}
+    {%- assign password_confirmation_label = "auth.fields.password_confirmation" | user_t -%}
     {%- render 'form-password-session-pages',
         form: form,
         form_name: "register",
-        password_label: section.settings.password_label,
-        password_confirmation_label: section.settings.password_confirmation_label
+        password_label: password_label,
+        password_confirmation_label: password_confirmation_label
     -%}
 
     <div class="{% if form.errors.customer %}account-fieldset--error{% endif %} account__divider">
-      <label class="account-fieldset__static-label">{{ section.settings.account_type_label }}</label>
+      <label class="account-fieldset__static-label">{{ "auth.fields.legal_type" | user_t }}</label>
 
       <div class="account-type-options">
         <div class="account-type-options__first-option">
@@ -59,7 +61,7 @@
             id="user_legal_type_person"
             value="person"
             {% if form.legal_type == 'person' %}checked{% endif %}>
-          <label class="account-fieldset__radio-label" for="user_legal_type_person">{{ section.settings.private_label }}</label>
+          <label class="account-fieldset__radio-label" for="user_legal_type_person">{{ "auth.fields.legal_person" | user_t }}</label>
         </div>
 
         <div>
@@ -69,7 +71,7 @@
             id="user_legal_type_commercial"
             value="commercial"
             {% if form.legal_type == 'commercial' %}checked{% endif %}>
-          <label class="account-fieldset__radio-label" for="user_legal_type_commercial">{{ section.settings.company_label }}</label>
+          <label class="account-fieldset__radio-label" for="user_legal_type_commercial">{{ "auth.fields.legal_commercial" | user_t }}</label>
         </div>
       </div>
       <div class="account__error-message">{{ form.errors.customer }}</div>
@@ -83,12 +85,12 @@
         value="true"
         {% if form.agreement_accepted %}checked{% endif %}>
       <label for="user_agreement_accepted">
-        {{ section.settings.i_agree_label }}
+        {{ "auth.fields.accept_toc" | user_t }}
 
         <span class="account__agreement">
           <input type="checkbox" id="user_agreement_opener" style="display: none">
           <label for="user_agreement_opener" class="account__agreement-opener">
-            {{ section.settings.terms_and_agreements_label }}
+            {{ "auth.sign_up.terms_and_agreements" | user_t }}
           </label>
 
           <span class="account__agreement-modal bq-content rx-content" style="display: none">
@@ -101,7 +103,7 @@
 
                   <span class="account__agreement-buttons">
                     <label class="account__agreement-button account__button account__button--primary" for="user_agreement_opener">
-                      {{ section.settings.terms_and_agreements_accept_button_label }}
+                      {{ "auth.sign_up.agree" | user_t }}
                     </label>
                   </span>
                 </span>
@@ -117,7 +119,7 @@
       type="submit"
       class="account__button account__button--primary"
       name="commit"
-      value="{{ section.settings.button_sign_up_label }}"
+      value="{{ "auth.sign_up_button" | user_t }}"
     >
   {% endform %}
 </div>
@@ -128,84 +130,6 @@
     "important": true,
     "unique": true,
     "templates": ["register"],
-    "settings": [
-      {
-        "type": "header",
-        "content": "Translations"
-      },
-      {
-        "id": "title",
-        "type": "text",
-        "label": "Title",
-        "default": "Create an account"
-      },
-      {
-        "id": "login_description",
-        "type": "text",
-        "label": "Log in description",
-        "default": "Already have an account?"
-      },
-      {
-        "id": "login_link_label",
-        "type": "text",
-        "label": "Log in link label",
-        "default": "Log in"
-      }, {
-        "id": "name_label",
-        "type": "text",
-        "label": "Name field label",
-        "default": "Full name"
-      }, {
-        "id": "email_label",
-        "type": "text",
-        "label": "Email field label",
-        "default": "Email"
-      }, {
-        "id": "password_label",
-        "type": "text",
-        "label": "Password field label",
-        "default": "Password"
-      }, {
-        "id": "password_confirmation_label",
-        "type": "text",
-        "label": "Password confirmation field label",
-        "default": "Password confirmation"
-      }, {
-        "id": "account_type_label",
-        "type": "text",
-        "label": "Account type label",
-        "default": "Account type"
-      }, {
-        "id": "private_label",
-        "type": "text",
-        "label": "Private label",
-        "default": "Private"
-      }, {
-        "id": "company_label",
-        "type": "text",
-        "label": "Company label",
-        "default": "Company"
-      }, {
-        "id": "i_agree_label",
-        "type": "text",
-        "label": "I agree...",
-        "default": "I agree to the"
-      }, {
-        "id": "terms_and_agreements_label",
-        "type": "text",
-        "label": "Terms and agreements",
-        "default": "Terms and agreements"
-      }, {
-        "id": "terms_and_agreements_accept_button_label",
-        "type": "text",
-        "label": "Terms and agreements button (Modal window)",
-        "default": "Agree"
-      }, {
-        "id": "button_sign_up_label",
-        "type": "text",
-        "label": "Sign up button",
-        "default": "Sign up"
-      }
-    ]
+    "settings": []
   }
 {% endschema %}
