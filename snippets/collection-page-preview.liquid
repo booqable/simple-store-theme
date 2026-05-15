@@ -15,11 +15,6 @@
       <div class="collection-page__title">
         <span class="skeleton"></span>
       </div>
-      <div class="collection-page__sidebar-navigation--mobile">
-        {% if section.blocks.size > 0 %}
-          {% render "sidebar-navigation", menus: section.blocks, sticky: section.settings.sticky_sidebar, mode: "mobile", toggle: section.settings.sidebar_toggle %}
-        {% endif %}
-      </div>
     </div>
     <div class="collection-page__items">
       {% for item in (1..6) %}

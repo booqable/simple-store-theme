@@ -2,6 +2,25 @@
 {{ "list-menu.css" | asset_url | stylesheet_tag }}
 
 {% assign app = section.blocks | where: "type", "app" | first -%}
+{% if preview %}
+  {% assign current_url = request_fullpath | strip %}
+{% else %}
+  {% assign current_url = request_path | strip %}
+{% endif %}
+{% assign collections_size = non_system_collections | size %}
+{% assign mobile_actions_count = 1 %}
+
+{% if show_mini_cart %}
+  {% assign mobile_actions_count = mobile_actions_count | plus: 1 %}
+{% endif %}
+
+{% if collections_size > 0 %}
+  {% assign mobile_actions_count = mobile_actions_count | plus: 1 %}
+{% endif %}
+
+{% if section.settings.menu != blank %}
+  {% assign mobile_actions_count = mobile_actions_count | plus: 1 %}
+{% endif %}
 
 {% if app %}
   {{ "app.css" | asset_url | stylesheet_tag }}
@@ -78,17 +97,13 @@
   }
 
   @media (max-width: 990px) {
-    .header .header__wrapper--with-menu, .header .header__wrapper--with-mini-cart {
-      grid-template-columns: 1fr repeat(2, 50px);
-    }
-
-    .header .header__wrapper--with-menu.header__wrapper--with-mini-cart {
-      grid-template-columns: 1fr repeat(3, 50px);
+    .header .header__wrapper {
+      grid-template-columns: 1fr repeat({{ mobile_actions_count }}, 50px);
     }
   }
 </style>
 
-<div class="header__wrapper header__wrapper--with-menu{% if show_mini_cart %} header__wrapper--with-mini-cart{% else %} header__wrapper--without-mini-cart{% endif %}">
+<div class="header__wrapper{% if section.settings.menu != blank %} header__wrapper--with-menu{% endif %}{% if show_mini_cart %} header__wrapper--with-mini-cart{% else %} header__wrapper--without-mini-cart{% endif %}">
   <div class="header__link-container">
     <a href="{{ routes.root_url }}" class="header__link">
       {% if section.settings.logo.url != blank %}
@@ -192,11 +207,13 @@
       <i class="fa-regular fa-spinner-third fa-spin"></i>
     </div>
   {% endif %}
-  <div class="collection-floating-menu">
-    <button class="header-collection-floating-menu__trigger" onclick="handleOpenCollectionMenu()">
-      <i class="fa-regular fa-bars header-collection-floating-menu__icon open"></i>
-    </button>
-  </div>
+  {% if collections_size > 0 %}
+    <div class="collection-floating-menu">
+      <button class="header-collection-floating-menu__trigger" onclick="handleOpenCollectionMenu()">
+        <i class="fa-regular fa-bars header-collection-floating-menu__icon open"></i>
+      </button>
+    </div>
+  {% endif %}
   {% if section.settings.menu != blank %}
     <div class="header-floating-menu">
       <input type="checkbox" id="floating-menu-trigger">
@@ -254,6 +271,18 @@
     </div>
   {% endif %}
 </div>
+
+{% if collections_size > 0 %}
+  <div class="header__collection-navigation">
+    {% render "collection-navigation",
+      collections: non_system_collections,
+      mode: "mobile",
+      current_url: current_url,
+      root: routes.root_url,
+      all_products: all_products_collection
+    %}
+  </div>
+{% endif %}
 
 {% schema %}
 {

@@ -37,18 +37,6 @@
       </div>
     {% endif %}
     <div class="collection-page__inner">
-      {% if collections_size > 0 %}
-        <div class="collection-page__header">
-          <div class="collection-page__sidebar-navigation--mobile">
-              {% render "collection-navigation", 
-                collections: non_system_collections, 
-                mode: "mobile", 
-                toggle: section.settings.sidebar_toggle, 
-                root: routes.root_url,
-                all_products: all_products_collection  %}
-          </div>
-        </div>
-      {% endif %}
       {% if collection.items_count > 0 %}
         <div class="sorting-select-wrapper">
           {% render 'sorting-select' default_value: products_sort_order %}
