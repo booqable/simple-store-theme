@@ -403,7 +403,7 @@
   font-weight: 300;
 }
 
-.header-floating-menu, 
+.header-floating-menu,
 .collection-floating-menu {
   display: none;
 }
@@ -485,6 +485,16 @@
   }
 }
 
+@media (min-width: 991px) {
+  .header__wrapper.header__wrapper--with-menu {
+    grid-template-columns: 1fr max-content;
+  }
+
+  .header__wrapper.header__wrapper--with-menu.header__wrapper--with-mini-cart {
+    grid-template-rows: 1fr max-content 50px;
+  }
+}
+
 @media (max-width: 991px) {
   .header__nav--desktop {
     display: none;
@@ -533,6 +543,7 @@
 
   .header-search__wrapper .header-search__input-wrapper {
     width: 100%;
+    max-width: 260px;
   }
 
   .header-search #floating-search:checked ~ .header-search__wrapper {

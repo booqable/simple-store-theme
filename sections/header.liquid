@@ -2,7 +2,6 @@
 {{ "list-menu.css" | asset_url | stylesheet_tag }}
 
 {% assign app = section.blocks | where: "type", "app" | first -%}
-{% assign current_url = request_fullpath | strip %}
 
 {% if app %}
   {{ "app.css" | asset_url | stylesheet_tag }}
@@ -80,16 +79,16 @@
 
   @media (max-width: 990px) {
     .header .header__wrapper--with-menu, .header .header__wrapper--with-mini-cart {
-      grid-template-columns: 1fr repeat({% if current_url == routes.root_url %}3 {%  else  %}2 {% endif %}, 50px);
+      grid-template-columns: 1fr repeat(2, 50px);
     }
 
     .header .header__wrapper--with-menu.header__wrapper--with-mini-cart {
-      grid-template-columns: 1fr repeat({% if current_url == routes.root_url %}3 {%  else  %}2 {% endif %}, 50px);
+      grid-template-columns: 1fr repeat(3, 50px);
     }
   }
 </style>
 
-<div class="header__wrapper{% if section.settings.menu != blank %} header__wrapper--with-menu{% endif %}{% if show_mini_cart %} header__wrapper--with-mini-cart{% else %} header__wrapper--without-mini-cart{% endif %}">
+<div class="header__wrapper header__wrapper--with-menu{% if show_mini_cart %} header__wrapper--with-mini-cart{% else %} header__wrapper--without-mini-cart{% endif %}">
   <div class="header__link-container">
     <a href="{{ routes.root_url }}" class="header__link">
       {% if section.settings.logo.url != blank %}
@@ -193,13 +192,11 @@
       <i class="fa-regular fa-spinner-third fa-spin"></i>
     </div>
   {% endif %}
-  {% if current_url == routes.root_url %}
-    <div class="collection-floating-menu">
-      <button class="header-collection-floating-menu__trigger" onclick="handleOpenCollectionMenu()">
-        <i class="fa-regular fa-bars header-collection-floating-menu__icon open"></i>
-      </button>
-    </div>
-  {% endif %}
+  <div class="collection-floating-menu">
+    <button class="header-collection-floating-menu__trigger" onclick="handleOpenCollectionMenu()">
+      <i class="fa-regular fa-bars header-collection-floating-menu__icon open"></i>
+    </button>
+  </div>
   {% if section.settings.menu != blank %}
     <div class="header-floating-menu">
       <input type="checkbox" id="floating-menu-trigger">
