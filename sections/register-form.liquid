@@ -14,6 +14,10 @@
   {%- endif -%}
 
   {% form 'register' %}
+    {%- if form.errors.base != blank -%}
+      <div class="account__alert account__alert--danger">{{ form.errors.base }}</div>
+    {%- endif -%}
+
     <div class="{% if form.errors.name %}account-fieldset--error{% endif %}">
       <label for="user_name" class="account-fieldset__label">{{ "auth.fields.full_name" | user_t }}</label>
       <input
