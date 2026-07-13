@@ -1,5 +1,3 @@
-{{ "sorting.css" | asset_url | stylesheet_tag }}
-
 <select id="sorting" class="sorting-select">
   <option value="default" {% if default_value == "default" %}SELECTED{% endif %}>
     {{ "store.sorting_standard" | user_t }}
