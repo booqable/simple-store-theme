@@ -1,0 +1,23 @@
+{
+  "name": "booking-page-theme",
+  "version": "1.0.0",
+  "description": "",
+  "homepage": "https://github.com/booqable/simple-store-theme#readme",
+  "bugs": {
+    "url": "https://github.com/booqable/simple-store-theme/issues"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/booqable/simple-store-theme.git"
+  },
+  "license": "UNLICENSED",
+  "author": "Booqable",
+  "type": "commonjs",
+  "main": "index.js",
+  "scripts": {
+    "build:css": "lightningcss --bundle --minify assets/core.css -o assets/core.min.css"
+  },
+  "devDependencies": {
+    "lightningcss-cli": "^1.32.0"
+  }
+}
