@@ -13,7 +13,6 @@
   "license": "UNLICENSED",
   "author": "Booqable",
   "type": "commonjs",
-  "main": "index.js",
   "scripts": {
     "build:css": "lightningcss --bundle --minify assets/core.css -o assets/core.min.css"
   },
