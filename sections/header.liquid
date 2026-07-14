@@ -1,6 +1,3 @@
-{{ "header.css" | asset_url | stylesheet_tag }}
-{{ "list-menu.css" | asset_url | stylesheet_tag }}
-
 {% assign app = section.blocks | where: "type", "app" | first -%}
 {%  assign collections_size = non_system_collections | size %}
 
