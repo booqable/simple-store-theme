@@ -41,7 +41,7 @@
 }
 
 .product .product__image-container img.lazyloaded {
-  filter: blur(0);
+  filter: none;
 }
 
 .product .product__image:not(.focal-image) {
