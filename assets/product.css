@@ -34,7 +34,7 @@
   background-color: var(--color-image-placeholder);
 }
 
-.product .product__image-container img {
+.product .product__image-container img.lazyload {
   filter: blur(4px);
 
   transition: filter 150ms ease;
