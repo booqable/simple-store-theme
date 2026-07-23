@@ -1,5 +1,6 @@
 {
   "name": "Cart",
+  "layout": "cart",
   "sections": {
     "date-picker": {
       "type": "date-picker",
