@@ -103,10 +103,13 @@
   justify-content: flex-end;
 }
 
-.footer__payment-methods i {
+.footer__payment-methods .icon {
   color: var(--color-primary-foreground);
 
-  font-size: 32px;
+  width: 32px;
+  height: 32px;
+
+  margin: 0 4px 4px;
 }
 
 .footer__payment-methods svg {
@@ -115,8 +118,7 @@
   width: 100%;
 }
 
-.footer__payment-methods span[title],
-.footer__payment-methods i {
+.footer__payment-methods span[title] {
   margin: 0 4px 4px;
   display: inline-flex;
   align-items: center;

@@ -9,8 +9,6 @@
   {{ "base.css" | asset_url | stylesheet_tag }}
   {{ "sessions-layout.css" | asset_url | stylesheet_tag }}
   {{ "header.css" | asset_url | stylesheet_tag }}
-  {% comment %} Fonts {% endcomment %}
-  <script src="https://kit.fontawesome.com/ff3b3de2b5.js" crossorigin="anonymous"></script>
   {{ content_for_header }}
 
   {% render 'fonts', settings: settings %}

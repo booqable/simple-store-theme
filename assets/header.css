@@ -347,7 +347,7 @@
   width: 12px;
   border-radius: 50%;
   background-color: var(--color-primary-foreground);
-  background: url(https://pro.fontawesome.com/releases/v5.10.0/svgs/solid/times-circle.svg)
+  background: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 512 512'%3E%3Ccircle cx='256' cy='256' r='256' fill='%23140202'/%3E%3Cpath d='M336 176L176 336M176 176L336 336' stroke='white' stroke-width='40' stroke-linecap='round'/%3E%3C/svg%3E")
     no-repeat 50% 50%;
   background-size: contain;
   opacity: 0;
@@ -395,12 +395,13 @@
   color: var(--color-accent-foreground) !important;
 }
 
-.header-cart bq-mini-cart[initialized="true"] + i {
+.header-cart:has([initialized="true"]) .header-cart__spinner {
   display: none;
 }
 
-.header-cart .fa-spinner-third {
+.header-cart .header-cart__spinner {
   color: var(--color-primary-foreground);
+  font-size: 24px;
 }
 
 .header-cart .bq-icon-cart::before {

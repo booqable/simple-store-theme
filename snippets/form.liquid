@@ -67,12 +67,12 @@
     <div class="form__info">
       {% if form.posted_successfully %}
         <p class="success">
-          <i class="fa-solid fa-circle-check"></i> {{ section.settings.success_message }}
+          {% render 'icon', name: 'circle-check', style: 'solid' %} {{ section.settings.success_message }}
         </p>
       {% endif %}
       {% if form.errors != blank %}
         <p class="error">
-          <i class="fa-solid fa-circle-exclamation"></i> {{ section.settings.error_message }}
+          {% render 'icon', name: 'circle-exclamation', style: 'solid' %} {{ section.settings.error_message }}
         </p>
       {% endif %}
     </div>

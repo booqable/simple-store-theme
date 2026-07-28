@@ -1,5 +1,5 @@
 <a href="{{ routes.root_url }}" class="bq-breadcrumb">
-  <i class="fa-solid fa-chevron-left"></i> {{ "store.home" | user_t | default: "Home" }}
+  {% render 'icon', name: 'chevron-left', style: 'solid' %} {{ "store.home" | user_t | default: "Home" }}
 </a>
 <div class="product-page__layout">
   {% if canonical_url contains "/1?" or canonical_url contains "/1#" %}
