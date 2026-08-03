@@ -7,7 +7,7 @@
         paginate.previous.url
       }}{% else %}#{% endif %}"
     >
-      <i class="fa-solid fa-chevron-left"></i>
+      {% render 'icon', name: 'chevron-left', style: 'solid' %}
     </a>
   </span>
   {% for part in paginate.parts %}
@@ -31,7 +31,7 @@
         paginate.next.url
       }}{% else %}#{% endif %}"
     >
-      <i class="fa-solid fa-chevron-right"></i>
+      {% render 'icon', name: 'chevron-right', style: 'solid' %}
     </a>
   </span>
 </div>

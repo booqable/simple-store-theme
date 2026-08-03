@@ -34,6 +34,7 @@
   box-sizing: border-box;
 }
 
+/* Excludes <i> so host-injected icon fonts (e.g. .bq-icon-cart) aren't overridden. */
 *:not(i),
 *:not(i)::before,
 *:not(i)::after {
@@ -43,6 +44,25 @@
 body {
   background-color: var(--color-primary-background);
   overflow-wrap: anywhere;
+}
+
+/* Inline SVG icons (snippets/icon.liquid); 1em so they scale with font-size. */
+.icon {
+  width: 1em;
+  height: 1em;
+  display: inline-block;
+  vertical-align: -0.125em;
+  fill: currentColor;
+  flex-shrink: 0;
+}
+
+.icon--spin {
+  animation: icon-spin 1s linear infinite;
+}
+
+@keyframes icon-spin {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
 }
 
 /* Overriding redactor implementation of separator */

@@ -31,7 +31,7 @@
     .header-search__icon,
     .header-floating-menu__icon,
     .header__nav .list-menu__item .list-menu__item-caret,
-    .header-cart .fa-spinner-third,
+    .header-cart .header-cart__spinner,
     .header__link img {
       color: {{ section.settings.foreground_color }};
     }
@@ -91,16 +91,16 @@
     <div class="header-search">
         <input type="checkbox" id="floating-search">
         <label for="floating-search" class="header-search__trigger">
-        <i class="fa-light fa-magnifying-glass header-search__icon open"></i>
+        {% render 'icon', name: 'magnifying-glass', style: 'light', class: 'header-search__icon open' %}
         </label>
         <div class="header-search__wrapper">
         <form id="search" action="{{ routes.search_url }}" role="search">
             <div class="header-search__input-wrapper">
-            <i class="fa-light fa-magnifying-glass header-search__icon"></i>
+            {% render 'icon', name: 'magnifying-glass', style: 'light', class: 'header-search__icon' %}
             <input type="search" name="q" class="header-search__input" placeholder="{{ "store.search_products" | user_t }}">
             </div>
             <label class="header-search__trigger" for="floating-search">
-            <i class="fa-light fa-xmark header-search__icon close"></i>
+            {% render 'icon', name: 'xmark', style: 'light', class: 'header-search__icon close' %}
             </label>
         </form>
         </div>
@@ -109,14 +109,14 @@
     {% if show_mini_cart %}
         <div class="header-cart">
         {{ cart_button }}
-        <i class="fa-regular fa-spinner-third fa-spin"></i>
+        {% render 'icon', name: 'spinner-third', style: 'regular', class: 'header-cart__spinner icon--spin' %}
         </div>
     {% endif %}
 
     {% if collections_size > 0 %}
         <div class="collection-floating-menu">
         <button class="header-collection-floating-menu__trigger" onclick="handleOpenCollectionMenu()">
-            <i class="fa-regular fa-bars header-collection-floating-menu__icon open"></i>
+            {% render 'icon', name: 'bars', style: 'regular', class: 'header-collection-floating-menu__icon open' %}
         </button>
         </div>
     {% endif %}

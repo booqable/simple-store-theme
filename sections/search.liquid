@@ -3,7 +3,7 @@
 
 {% if results_count > 0 %}
   <a href="{{ routes.root_url }}" class="bq-breadcrumb">
-    <i class="fa-solid fa-chevron-left"></i> {{ "store.home" | user_t | default: "Home" }}
+    {% render 'icon', name: 'chevron-left', style: 'solid' %} {{ "store.home" | user_t | default: "Home" }}
   </a>
 <h1 class="search__title">{{ section.settings.search_results_title }} “{{ query }}”</h1>
 {% endif %}

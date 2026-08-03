@@ -36,15 +36,15 @@
             {% for provider in payment_methods %}
               {% case provider %}
                 {% when "paypal" %}
-                  <i class="fa-brands fa-cc-paypal" title="PayPal"></i>
+                  {% render 'icon', name: 'cc-paypal', style: 'brands', title: 'PayPal' %}
                 {% when "creditcard" %}
-                  <i class="fa-brands fa-cc-visa" title="Visa"></i>
-                  <i class="fa-brands fa-cc-mastercard" title="MasterCard"></i>
-                  <i class="fa-brands fa-cc-amex" title="American Express"></i>
+                  {% render 'icon', name: 'cc-visa', style: 'brands', title: 'Visa' %}
+                  {% render 'icon', name: 'cc-mastercard', style: 'brands', title: 'MasterCard' %}
+                  {% render 'icon', name: 'cc-amex', style: 'brands', title: 'American Express' %}
                 {% when "ideal" %}
-                  <i class="fa-brands fa-ideal" title="iDEAL"></i>
+                  {% render 'icon', name: 'ideal', style: 'brands', title: 'iDEAL' %}
                 {% when "alipay" %}
-                  <i class="fa-brands fa-alipay" title="Alipay"></i>
+                  {% render 'icon', name: 'alipay', style: 'brands', title: 'Alipay' %}
                 {% when "p24" %}
                   {% include "p24-icon" %}
                 {% when "eps" %}
