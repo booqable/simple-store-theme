@@ -74,8 +74,8 @@
                   {{ image | image_tag:
                     loading: image_loading,
                     class: 'product__image',
-                    widths: '500, 700',
-                    sizes: '(max-width: 489px) 700px, 500px',
+                    widths: '250, 500, 800',
+                    sizes: '(max-width: 489px) calc(100vw - 66px), 250px',
                     focal: focal,
                     alt: item.name
                   }}
