@@ -6,9 +6,10 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta name="generator" content="Booqable" />
 
+  {% render 'fonts' %}
+
   {{ content_for_checkout_header }}
 
-  {% render 'fonts', settings: settings %}
   {% render 'color-palette-styles', settings: settings, branding_color: branding_color %}
 
   {% render 'page-metadata',

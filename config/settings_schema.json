@@ -52,25 +52,6 @@
     ]
   },
   {
-    "name": "Typography",
-    "settings": [
-      {
-        "type": "font_picker",
-        "id": "heading_font",
-        "label": "Heading",
-        "info": "Font used for headers",
-        "default": "source-sans-pro"
-      },
-      {
-        "type": "font_picker",
-        "id": "body_font",
-        "label": "Body",
-        "info": "Font used for texts",
-        "default": "source-sans-pro"
-      }
-    ]
-  },
-  {
     "name": "Images",
     "settings": [
       {

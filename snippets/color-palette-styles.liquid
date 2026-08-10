@@ -20,12 +20,9 @@
     --cart-lines-background-color: var(--color-accent-background);
     --cart-lines-color: var(--color-accent-foreground);
 
-    {% if settings.heading_font != blank %}
-      --font-heading: "{{ settings.heading_font.family }}", {{ settings.heading_font.fallback_families }};
-    {% endif %}
-    {% if settings.body_font != blank %}
-      --font-body: "{{ settings.body_font.family }}", {{ settings.body_font.fallback_families }};
-    {% endif %}
+    {% comment %} Hard-coded to match the faces loaded in the `fonts` snippet {% endcomment %}
+    --font-heading: "Open Sans", sans-serif;
+    --font-body: "Open Sans", sans-serif;
 
     {% if is_local_theme %}
       --branding-color: {{ settings.primary_color }};
