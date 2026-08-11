@@ -37,8 +37,8 @@
             loading: 'lazy',
             class: 'product__image',
             alt: result.name,
-            widths: '600, 750',
-            sizes: '(max-width: 490px) 750px, 600px',
+            widths: '300, 600, 900',
+            sizes: '(max-width: 489px) calc(100vw - 66px), 286px',
             focal: focal
           }}{% endif %}</a>
           {{ result | product_availability }}
