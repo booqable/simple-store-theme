@@ -5,8 +5,6 @@
     "primary_background_color": "#FFFFFF",
     "primary_foreground_color": "#140202",
     "primary_color": "#2B67C1",
-    "heading_font": "open-sans",
-    "body_font": "open-sans",
     "sections": {
       "header": {
         "type": "header",

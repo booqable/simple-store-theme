@@ -5,13 +5,14 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta name="generator" content="Booqable" />
+  {% render 'fonts' %}
+
   {% comment %} Base stylesheets {% endcomment %}
   {{ "base.css" | asset_url | stylesheet_tag }}
   {{ "sessions-layout.css" | asset_url | stylesheet_tag }}
   {{ "header.css" | asset_url | stylesheet_tag }}
   {{ content_for_header }}
 
-  {% render 'fonts', settings: settings %}
   {% render 'color-palette-styles', settings: settings, branding_color: branding_color %}
 
   {% render 'page-metadata',
