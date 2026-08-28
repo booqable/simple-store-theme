@@ -10,11 +10,13 @@
     <div class="sidebar-navigation__inner">
       <div class="sidebar-navigation-menu">
         <ul class="list-menu list-menu--vertical">
-          <li class="list-menu__item">
-            <span class="list-menu__item-wrapper">
-              <a href="{{ root }}" class="sidebar-navigation-menu__link">{{ all_products.name }}</a>
-            </span>
-          </li>
+          {% if all_products.show_in_store %}
+            <li class="list-menu__item">
+              <span class="list-menu__item-wrapper">
+                <a href="{{ root }}" class="sidebar-navigation-menu__link">{{ all_products.name }}</a>
+              </span>
+            </li>
+          {% endif %}
           {% for collection in collections %}
             {% assign url = collection.url | strip %}
             <li class="list-menu__item">
