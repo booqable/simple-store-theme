@@ -2,6 +2,12 @@
   <option value="default" {% if default_value == "default" %}SELECTED{% endif %}>
     {{ "store.sorting_standard" | user_t }}
   </option>
+  <option value="name" {% if default_value == "name" %}SELECTED{% endif %}>
+    {{ "store.sorting_alphabetical_asc" | user_t }}
+  </option>
+  <option value="-name" {% if default_value == "-name" %}SELECTED{% endif %}>
+    {{ "store.sorting_alphabetical_desc" | user_t }}
+  </option>
   <option value="price_each_in_cents" {% if default_value == "price_each_in_cents" %}SELECTED{% endif %}>
     {{ "store.sorting_price_ascending" | user_t }}
   </option>
