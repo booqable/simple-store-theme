@@ -8,12 +8,6 @@
   <option value="-name" {% if default_value == "-name" %}SELECTED{% endif %}>
     {{ "store.sorting_alphabetical_desc" | user_t }}
   </option>
-  <option value="price_each_in_cents" {% if default_value == "price_each_in_cents" %}SELECTED{% endif %}>
-    {{ "store.sorting_price_ascending" | user_t }}
-  </option>
-  <option value="-price_each_in_cents" {% if default_value == "-price_each_in_cents" %}SELECTED{% endif %}>
-    {{ "store.sorting_price_descending" | user_t }}
-  </option>
   <option value="-created_at" {% if default_value == "-created_at" %}SELECTED{% endif %}>
     {{ "store.sorting_newest" | user_t }}
   </option>
