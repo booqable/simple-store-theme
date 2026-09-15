@@ -17,4 +17,7 @@
   <option value="-created_at" {% if default_value == "-created_at" %}SELECTED{% endif %}>
     {{ "store.sorting_newest" | user_t }}
   </option>
+  <option value="-popularity_score" {% if default_value == "-popularity_score" %}SELECTED{% endif %}>
+    {{ "store.sorting_popularity" | user_t }}
+  </option>
 </select>
