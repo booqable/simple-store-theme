@@ -49,31 +49,46 @@ const initSearchToggle = () => {
   const container = document.querySelector(".header-search");
   if (!container) return;
 
+  const header = container.closest(".header");
+  const wrapper = container.querySelector(".header-search__wrapper");
   const triggers = container.querySelectorAll(".header-search__trigger");
   const [openTrigger] = triggers;
   const input = container.querySelector(".header-search__input");
+  const overlayQuery = window.matchMedia("(max-width: 991px)");
 
-  const setOpen = (open) => {
+  // Header elements hidden underneath the open search overlay
+  const covered = [];
+  for (let el = wrapper; el !== header; el = el.parentElement) {
+    covered.push(...[...el.parentElement.children].filter((sibling) => sibling !== el));
+  }
+
+  const isOpen = () => container.classList.contains("header-search--open");
+
+  const setOpen = (open, { restoreFocus = true } = {}) => {
     container.classList.toggle("header-search--open", open);
     triggers.forEach((trigger) => trigger.setAttribute("aria-expanded", open));
+    covered.forEach((el) => (el.inert = open));
 
     if (open) {
       input.focus();
-    } else {
+    } else if (restoreFocus) {
       openTrigger.focus();
     }
   };
 
   triggers.forEach((trigger) =>
-    trigger.addEventListener("click", () =>
-      setOpen(!container.classList.contains("header-search--open"))
-    )
+    trigger.addEventListener("click", () => setOpen(!isOpen()))
   );
 
-  container.addEventListener("keydown", (e) => {
-    if (e.key === "Escape" && container.classList.contains("header-search--open")) {
-      setOpen(false);
+  document.addEventListener("keydown", (e) => {
+    if (e.key === "Escape" && isOpen()) {
+      setOpen(false, { restoreFocus: container.contains(document.activeElement) });
     }
+  });
+
+  // The overlay only exists below the desktop breakpoint
+  overlayQuery.addEventListener("change", (e) => {
+    if (!e.matches && isOpen()) setOpen(false, { restoreFocus: false });
   });
 };
 

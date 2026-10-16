@@ -65,8 +65,8 @@
 </style>
 
 <div class="header__wrapper {% if show_mini_cart %} header__wrapper--with-mini-cart{% else %} header__wrapper--without-mini-cart{% endif %}">
-  {%- comment -%} Product and search pages render their own h1 {%- endcomment -%}
-  {% if template == "product" or template == "search" %}
+  {%- comment -%} Product, search and 404 pages render their own h1 {%- endcomment -%}
+  {% if template == "product" or template == "search" or template == "404" %}
     {% assign logo_tag = "div" %}
   {% else %}
     {% assign logo_tag = "h1" %}
@@ -110,7 +110,7 @@
             {% render 'icon', name: 'magnifying-glass', style: 'light', class: 'header-search__icon' %}
             <input type="search" name="q" class="header-search__input" placeholder="{{ search_label }}" aria-label="{{ search_label }}">
             </div>
-            <button type="button" class="header-search__trigger" aria-label="{{ search_label }}" aria-expanded="false" aria-controls="header-search-wrapper">
+            <button type="button" class="header-search__trigger" aria-label="{{ "store.close" | user_t }}" aria-expanded="false" aria-controls="header-search-wrapper">
             {% render 'icon', name: 'xmark', style: 'light', class: 'header-search__icon close' %}
             </button>
         </form>
