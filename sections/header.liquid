@@ -65,28 +65,35 @@
 </style>
 
 <div class="header__wrapper {% if show_mini_cart %} header__wrapper--with-mini-cart{% else %} header__wrapper--without-mini-cart{% endif %}">
+  {%- comment -%} Product and search pages render their own h1 {%- endcomment -%}
+  {% if template == "product" or template == "search" %}
+    {% assign logo_tag = "div" %}
+  {% else %}
+    {% assign logo_tag = "h1" %}
+  {% endif %}
+
   <div class="header__link-container">
     <a href="{{ routes.root_url }}" class="header__link">
       {% if section.settings.logo.url != blank %}
-        <h1 class="header__logo-heading">
+        <{{ logo_tag }} class="header__logo-heading">
           <img
             src="{{ section.settings.logo | image_url }}"
             alt="{{ shop.name }}"
             class="header__image-logo"
           >
-        </h1>
+        </{{ logo_tag }}>
       {% elsif section.settings.custom_title != blank %}
-        <h1 class="header__text-logo">{{ section.settings.custom_title }}</h1>
+        <{{ logo_tag }} class="header__text-logo">{{ section.settings.custom_title }}</{{ logo_tag }}>
       {% elsif shop.logo_url != blank %}
-        <h1 class="header__logo-heading">
+        <{{ logo_tag }} class="header__logo-heading">
           <img
             src="{{ shop.logo_url }}"
             alt="{{ shop.name }}"
             class="header__image-logo"
           >
-        </h1>
+        </{{ logo_tag }}>
       {% else %}
-        <h1 class="header__text-logo">{{ shop.name }}</h1>
+        <{{ logo_tag }} class="header__text-logo">{{ shop.name }}</{{ logo_tag }}>
       {% endif %}
     </a>
   </div>
