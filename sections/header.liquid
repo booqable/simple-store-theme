@@ -65,43 +65,54 @@
 </style>
 
 <div class="header__wrapper {% if show_mini_cart %} header__wrapper--with-mini-cart{% else %} header__wrapper--without-mini-cart{% endif %}">
+  {%- comment -%} Product, search and 404 pages render their own h1 {%- endcomment -%}
+  {% if template == "product" or template == "search" or template == "404" %}
+    {% assign logo_tag = "div" %}
+  {% else %}
+    {% assign logo_tag = "h1" %}
+  {% endif %}
+
   <div class="header__link-container">
     <a href="{{ routes.root_url }}" class="header__link">
       {% if section.settings.logo.url != blank %}
-        <img
-          src="{{ section.settings.logo | image_url }}"
-          alt="{{ shop.name }}"
-          class="header__image-logo"
-        >
+        <{{ logo_tag }} class="header__logo-heading">
+          <img
+            src="{{ section.settings.logo | image_url }}"
+            alt="{{ shop.name }}"
+            class="header__image-logo"
+          >
+        </{{ logo_tag }}>
       {% elsif section.settings.custom_title != blank %}
-        <h1 class="header__text-logo">{{ section.settings.custom_title }}</h1>
+        <{{ logo_tag }} class="header__text-logo">{{ section.settings.custom_title }}</{{ logo_tag }}>
       {% elsif shop.logo_url != blank %}
-        <img
-          src="{{ shop.logo_url }}"
-          alt="{{ shop.name }}"
-          class="header__image-logo"
-        >
+        <{{ logo_tag }} class="header__logo-heading">
+          <img
+            src="{{ shop.logo_url }}"
+            alt="{{ shop.name }}"
+            class="header__image-logo"
+          >
+        </{{ logo_tag }}>
       {% else %}
-        <h1 class="header__text-logo">{{ shop.name }}</h1>
+        <{{ logo_tag }} class="header__text-logo">{{ shop.name }}</{{ logo_tag }}>
       {% endif %}
     </a>
   </div>
 
   <div class="header__actions-container">
+    {% assign search_label = "store.search_products" | user_t %}
     <div class="header-search">
-        <input type="checkbox" id="floating-search">
-        <label for="floating-search" class="header-search__trigger">
+        <button type="button" class="header-search__trigger" aria-label="{{ search_label }}" aria-expanded="false" aria-controls="header-search-wrapper">
         {% render 'icon', name: 'magnifying-glass', style: 'light', class: 'header-search__icon open' %}
-        </label>
-        <div class="header-search__wrapper">
+        </button>
+        <div class="header-search__wrapper" id="header-search-wrapper">
         <form id="search" action="{{ routes.search_url }}" role="search">
             <div class="header-search__input-wrapper">
             {% render 'icon', name: 'magnifying-glass', style: 'light', class: 'header-search__icon' %}
-            <input type="search" name="q" class="header-search__input" placeholder="{{ "store.search_products" | user_t }}">
+            <input type="search" name="q" class="header-search__input" placeholder="{{ search_label }}" aria-label="{{ search_label }}">
             </div>
-            <label class="header-search__trigger" for="floating-search">
+            <button type="button" class="header-search__trigger" aria-label="{{ "store.close" | user_t }}" aria-expanded="false" aria-controls="header-search-wrapper">
             {% render 'icon', name: 'xmark', style: 'light', class: 'header-search__icon close' %}
-            </label>
+            </button>
         </form>
         </div>
     </div>
