@@ -53,6 +53,10 @@
   margin: 0;
 }
 
+.header__logo-heading {
+  margin: 0;
+}
+
 .header__image-logo {
   display: block;
   max-width: 250px;
@@ -288,12 +292,16 @@
   align-items: center;
 }
 
-.header-search #floating-search {
-  display: none;
-}
-
 .header-search__trigger {
   display: none;
+
+  padding: 0;
+  margin: 0;
+
+  border: none;
+  background: none;
+  color: inherit;
+  appearance: none;
   cursor: pointer;
 }
 
@@ -544,7 +552,7 @@
     max-width: 260px;
   }
 
-  .header-search #floating-search:checked ~ .header-search__wrapper {
+  .header-search--open .header-search__wrapper {
     visibility: visible;
     pointer-events: all;
 

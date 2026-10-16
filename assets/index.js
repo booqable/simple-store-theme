@@ -45,6 +45,38 @@ const initSearch = () => {
   searchForm.addEventListener("submit", handleSearchSubmit);
 };
 
+const initSearchToggle = () => {
+  const container = document.querySelector(".header-search");
+  if (!container) return;
+
+  const triggers = container.querySelectorAll(".header-search__trigger");
+  const [openTrigger] = triggers;
+  const input = container.querySelector(".header-search__input");
+
+  const setOpen = (open) => {
+    container.classList.toggle("header-search--open", open);
+    triggers.forEach((trigger) => trigger.setAttribute("aria-expanded", open));
+
+    if (open) {
+      input.focus();
+    } else {
+      openTrigger.focus();
+    }
+  };
+
+  triggers.forEach((trigger) =>
+    trigger.addEventListener("click", () =>
+      setOpen(!container.classList.contains("header-search--open"))
+    )
+  );
+
+  container.addEventListener("keydown", (e) => {
+    if (e.key === "Escape" && container.classList.contains("header-search--open")) {
+      setOpen(false);
+    }
+  });
+};
+
 const handleSetMobileMenuHeight = () => {
   const menu = document.querySelector(".header-floating-menu__wrapper");
 
@@ -109,6 +141,7 @@ const handleOpenCollectionMenu = () => {
 document.addEventListener("DOMContentLoaded", () => {
   // Initializers
   initSearch();
+  initSearchToggle();
   initSortingSelect();
   handleSetMobileMenuHeight();
 });
