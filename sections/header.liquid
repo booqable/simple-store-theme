@@ -134,6 +134,22 @@
   </div>
 </div>
 
+{% if collections_size > 0 %}
+  {% if preview %}
+    {% assign current_url = request_fullpath | strip %}
+  {% else %}
+    {% assign current_url = request_path | strip %}
+  {% endif %}
+  <div class="collection-page__sidebar-navigation--mobile">
+    {% render "collection-navigation",
+      collections: non_system_collections,
+      mode: "mobile",
+      current_url: current_url,
+      root: routes.root_url,
+      all_products: all_products_collection %}
+  </div>
+{% endif %}
+
 {% schema %}
 {
   "name": "Header",
